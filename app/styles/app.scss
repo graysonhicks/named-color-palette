@@ -31,6 +31,23 @@ body {
 	transition: background 0.5s ease;
 }
 
+#colors-list {
+	display: flex;
+	flex-direction: row;
+}
+
+.named-color-block {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	justify-content: center;
+	height: 100px;
+	text-align: center;
+	font-weight: bold;
+	color: white;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
 .color-picker-panel {
 	background: $color-ui-panel;
 	width: $window-width;

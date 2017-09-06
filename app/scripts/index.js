@@ -3,8 +3,9 @@ var $ = require("jquery");
 var _ = require("underscore");
 // Required these in by default, feel free to add more.
 var tinycolor = require("tinycolor2");
-var ntc = require("ntc");
 //https://github.com/bgrins/TinyColor
+var ntc = require("ntc");
+var ColorScheme = require("color-scheme");
 
 var addSwatch = document.getElementById("add-swatch");
 var modeToggle = document.getElementById("mode-toggle");
@@ -150,8 +151,24 @@ function setColorValues(color) {
 	var color = tinycolor(color);
 	var rgbValues = color.toRgb();
 	var hexValue = color.toHex();
+	var scheme = new ColorScheme();
+	scheme
+		.from_hex(hexValue) // Start the scheme
+		.scheme("triade") // Use the 'triade' scheme, that is, colors
+		// selected from 3 points equidistant around
+		// the color wheel.
+		.variation("default"); // Use the 'soft' color variation
+
+	var colors = scheme.colors();
+	$("#colors-list").empty();
+	for (var i = 0; i < colors.length; i++) {
+		var ntcColor = ntc.name("#" + colors[i]);
+		$("#colors-list").append("<span class='named-color-block' style='background-color:#" + colors[i] + ";'>" + ntcColor[1] + "</span>");
+	}
+
 	hexValue = ntc.name("#" + hexValue);
 	hexValue = hexValue[1];
+
 	//set inputs
 	red.value = rgbValues.r;
 	green.value = rgbValues.g;
