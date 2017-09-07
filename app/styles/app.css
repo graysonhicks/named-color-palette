@@ -8139,7 +8139,10 @@ body {
 
 #colors-list {
   display: flex;
-  flex-direction: row; }
+  flex-direction: row;
+  position: fixed;
+  width: 100%;
+  z-index: 999; }
 
 .named-color-block {
   display: flex;
@@ -8201,10 +8204,10 @@ body {
   .color-cursor#hue-cursor {
     top: 0;
     left: 50%;
-    height: 20px;
-    width: 20px;
-    margin-top: -10px;
-    margin-left: -10px;
+    height: 30px;
+    width: 30px;
+    margin-top: -15px;
+    margin-left: -15px;
     pointer-events: none; }
 
 .spectrum-map {
@@ -8224,10 +8227,10 @@ body {
 
 .hue-map {
   position: absolute;
-  top: 5px;
-  bottom: 5px;
+  top: 125px;
+  bottom: 125px;
   right: 29px;
-  width: 10px; }
+  width: 20px; }
 
 #hue-canvas {
   border-radius: 8px;
