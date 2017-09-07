@@ -10,6 +10,6 @@ Generate a color palette based on a chosen color.  Provides semantic named color
 # Credits
 
 Uses:
-- [https://github.com/bgrins/TinyColor](tinycolor2) for many color manipulations (hsv, hsl, hex)
-- [https://github.com/c0bra/color-scheme-js](color-scheme-js) for the palette generation
-- http://www.chir.ag/projects/ntc(name that color) by chirag mehta for semantic color names, using the https://www.npmjs.com/package/ntc(npm package here)
+- [tinycolor2](https://github.com/bgrins/TinyColor) for many color manipulations (hsv, hsl, hex)
+- [color-scheme-js](https://github.com/c0bra/color-scheme-js) for the palette generation
+- [name that color](http://www.chir.ag/projects/ntc) by chirag mehta for semantic color names, using the [npm package here](https://www.npmjs.com/package/ntc)
