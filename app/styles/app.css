@@ -8262,12 +8262,6 @@ body {
     width: 68px;
     height: 68px;
     display: block; }
-  .button.mode-toggle {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 68px;
-    height: 40px; }
 
 .value-fields {
   display: none;
@@ -8288,12 +8282,18 @@ body {
     font-size: 1rem;
     display: block; }
 
-.rgb-fields .field-group {
+.rgb-fields {
   display: flex;
-  align-items: center; }
-.rgb-fields .field-input {
-  width: 42px;
-  margin-right: 10px; }
+  flex-direction: row;
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+  .rgb-fields .field-group {
+    display: flex;
+    align-items: center; }
+  .rgb-fields .field-input {
+    width: 42px;
+    margin-right: 10px; }
 
 .hex-field .field-input {
   width: 170px; }
@@ -8307,8 +8307,8 @@ body {
   border-radius: 4px;
   background: #ccc; }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
   /* display: none; <- Crashes Chrome on hover */
   -webkit-appearance: none;
   margin: 0;

@@ -8,7 +8,6 @@ var tinycolor = require("tinycolor2");
 var ntc = require("ntc");
 var ColorScheme = require("color-scheme");
 
-var modeToggle = document.getElementById("mode-toggle");
 var colorIndicator = document.getElementById("color-indicator");
 
 var spectrumCanvas = document.getElementById("spectrum-canvas");
@@ -247,11 +246,6 @@ green.addEventListener("change", function() {
 blue.addEventListener("change", function() {
 	var color = tinycolor("rgb " + red.value + " " + green.value + " " + blue.value);
 	colorToPos(color);
-});
-
-modeToggle.addEventListener("click", function() {
-	if (rgbFields.classList.contains("active") ? rgbFields.classList.remove("active") : rgbFields.classList.add("active"));
-	if (hexField.classList.contains("active") ? hexField.classList.remove("active") : hexField.classList.add("active"));
 });
 
 window.addEventListener("resize", function() {
