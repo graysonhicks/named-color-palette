@@ -105,7 +105,6 @@ function setColorValues(color) {
     .variation("default"); // Use the 'soft' color variation
 
   var colors = scheme.colors();
-  console.log(colors);
   $("#colors-list").empty();
   for (var i = 0; i < colors.length; i++) {
     var ntcColor = ntc.name("#" + colors[i]);
@@ -174,7 +173,7 @@ function getSpectrumColor(e) {
   lightness = hsvValue / 2 * (2 - hsvSaturation);
   saturation = hsvValue * hsvSaturation / (1 - Math.abs(2 * lightness - 1));
   var color = tinycolor("hsl " + hue + " " + saturation + " " + lightness);
-  console.log(color);
+
   setCurrentColor(color);
   setColorValues(color);
   updateSpectrumCursor(x, y);
