@@ -201,6 +201,11 @@ blue.addEventListener("change", function() {
   colorToPos(color);
 });
 
+hex.addEventListener("change", function() {
+  var color = tinycolor(hex.value);
+  colorToPos(color);
+});
+
 window.addEventListener("resize", function() {
   refreshElementRects();
 });
