@@ -111,29 +111,33 @@ function setColorValues(color) {
 	var color = tinycolor(color);
 	var rgbValues = color.toRgb();
 	var hexValue = color.toHex();
+	var hueValue = color.toHsl().h;
 	var scheme = new ColorScheme();
+	console.log(hueValue);
 	scheme
-		.from_hex(hexValue) // Start the scheme
+		.from_hue(hueValue) // Start the scheme
 		.scheme("triade") // Use the 'triade' scheme, that is, colors
 		// selected from 3 points equidistant around
 		// the color wheel.
 		.variation("default"); // Use the 'soft' color variation
 
 	var colors = scheme.colors();
+	console.log(colors);
 	$("#colors-list").empty();
 	for (var i = 0; i < colors.length; i++) {
 		var ntcColor = ntc.name("#" + colors[i]);
 		$("#colors-list").append("<span class='named-color-block' style='background-color:#" + colors[i] + ";'>" + ntcColor[1] + "</span>");
 	}
 
-	hexValue = ntc.name("#" + hexValue);
-	hexValue = hexValue[1];
+	//
+	// hexValue = ntc.name("#" + hexValue);
+	// hexValue = hexValue[1];
 
 	//set inputs
 	red.value = rgbValues.r;
 	green.value = rgbValues.g;
 	blue.value = rgbValues.b;
-	hex.value = hexValue;
+	hex.value = "#" + hexValue;
 }
 
 function setCurrentColor(color) {
@@ -166,6 +170,7 @@ function getSpectrumColor(e) {
 	// got some help here - http://stackoverflow.com/questions/23520909/get-hsl-value-given-x-y-and-hue
 	e.preventDefault();
 	//get x/y coordinates
+	
 	var x = e.pageX - spectrumRect.left;
 	var y = e.pageY - spectrumRect.top;
 	//constrain x max
