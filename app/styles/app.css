@@ -8158,7 +8158,7 @@ body {
   font-weight: bold;
   color: white;
   text-transform: uppercase;
-  font-family: 'Futura'; }
+  font-family: 'Futura', sans-serif; }
 
 .color-picker-panel {
   background: #1f232a;
@@ -8249,7 +8249,7 @@ body {
     display: flex; }
   .value-fields .field-label {
     margin-right: 6px;
-    font-family: 'Futura';
+    font-family: 'Futura', sans-serif;
     color: white; }
   .value-fields .field-input {
     background: #15191c;
