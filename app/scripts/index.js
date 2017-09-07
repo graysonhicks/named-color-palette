@@ -105,10 +105,15 @@ function setColorValues(color) {
     .variation("default"); // Use the 'soft' color variation
 
   var colors = scheme.colors();
-  $("#colors-list").empty();
+	var colorsList = document.getElementById("colors-list");
+	while(colorsList.firstChild) colorsList.removeChild(colorsList.firstChild)
   for (var i = 0; i < colors.length; i++) {
     var ntcColor = ntc.name("#" + colors[i]);
-    $("#colors-list").append("<span class='named-color-block' style='background-color:#" + colors[i] + ";'>" + ntcColor[1] + "</span>");
+		var span = document.createElement("span");
+		span.classList.add('named-color-block');
+		span.style.backgroundColor = '#' + colors[i];
+		span.innerHTML = ntcColor[1]
+		colorsList.appendChild(span);
   }
 
 
