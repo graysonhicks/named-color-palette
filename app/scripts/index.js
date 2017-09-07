@@ -82,10 +82,10 @@ function colorToPos(color) {
   var hsl = color.toHsl();
   hue = hsl.h;
   var hsv = color.toHsv();
-  var x = spectrumRect.width * hsv.s;
+  var x = spectrumRect.width - hue / 360 * spectrumRect.width;
   var y = spectrumRect.height * (1 - hsv.v);
-  var hueY = hueRect.height - hue / 360 * hueRect.height;
   updateSpectrumCursor(x, y);
+	setColorValues(color);
   setCurrentColor(color);
   createShadeSpectrum(colorToHue(color));
 }

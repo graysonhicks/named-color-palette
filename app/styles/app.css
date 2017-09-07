@@ -8157,7 +8157,8 @@ body {
   text-align: center;
   font-weight: bold;
   color: white;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }
+  text-transform: uppercase;
+  font-family: "Futura"; }
 
 .color-picker-panel {
   background: #1f232a;
