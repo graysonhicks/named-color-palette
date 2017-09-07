@@ -81,26 +81,6 @@ body {
 	text-align: center;
 }
 
-.swatch {
-	display: inline-block;
-	width: $swatch-width;
-	height: $swatch-width;
-	background: #ccc;
-	border-radius: 4px;
-	margin-left: 4px;
-	margin-bottom: 4px;
-	box-sizing: border-box;
-	border: 2px solid $color-ui-border;
-	cursor: pointer;
-}
-
-.default-swatches {
-	width: $swatches-width;
-	.swatch:nth-child(6n + 1) {
-		margin-left: 0;
-	}
-}
-
 .color-cursor {
 	border-radius: 100%;
 	background: #ccc;
@@ -194,13 +174,6 @@ body {
 		width: $eyedropper-width;
 		height: $eyedropper-width;
 		display: block;
-	}
-
-	&.add-swatch {
-		display: block;
-		padding: 6px;
-		width: 200px;
-		margin: 10px auto 0;
 	}
 
 	&.mode-toggle {

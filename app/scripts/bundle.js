@@ -8,11 +8,8 @@ var tinycolor = require("tinycolor2");
 var ntc = require("ntc");
 var ColorScheme = require("color-scheme");
 
-var addSwatch = document.getElementById("add-swatch");
 var modeToggle = document.getElementById("mode-toggle");
-var swatches = document.getElementsByClassName("default-swatches")[0];
 var colorIndicator = document.getElementById("color-indicator");
-var userSwatches = document.getElementById("user-swatches");
 
 var spectrumCanvas = document.getElementById("spectrum-canvas");
 var spectrumCtx = spectrumCanvas.getContext("2d");
@@ -38,45 +35,9 @@ var green = document.getElementById("green");
 var hex = document.getElementById("hex");
 
 function ColorPicker() {
-	this.addDefaultSwatches();
 	createShadeSpectrum();
 	createHueSpectrum();
 }
-
-ColorPicker.prototype.defaultSwatches = [
-	"#FFFFFF",
-	"#FFFB0D",
-	"#0532FF",
-	"#FF9300",
-	"#00F91A",
-	"#FF2700",
-	"#000000",
-	"#686868",
-	"#EE5464",
-	"#D27AEE",
-	"#5BA8C4",
-	"#E64AA9"
-];
-
-function createSwatch(target, color) {
-	var swatch = document.createElement("button");
-	swatch.classList.add("swatch");
-	swatch.setAttribute("title", color);
-	swatch.style.backgroundColor = color;
-	swatch.addEventListener("click", function() {
-		var color = tinycolor(this.style.backgroundColor);
-		colorToPos(color);
-		setColorValues(color);
-	});
-	target.appendChild(swatch);
-	refreshElementRects();
-}
-
-ColorPicker.prototype.addDefaultSwatches = function() {
-	for (var i = 0; i < this.defaultSwatches.length; ++i) {
-		createSwatch(swatches, this.defaultSwatches[i]);
-	}
-};
 
 function refreshElementRects() {
 	spectrumRect = spectrumCanvas.getBoundingClientRect();
@@ -286,10 +247,6 @@ green.addEventListener("change", function() {
 blue.addEventListener("change", function() {
 	var color = tinycolor("rgb " + red.value + " " + green.value + " " + blue.value);
 	colorToPos(color);
-});
-
-addSwatch.addEventListener("click", function() {
-	createSwatch(userSwatches, currentColor);
 });
 
 modeToggle.addEventListener("click", function() {
