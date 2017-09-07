@@ -49,20 +49,30 @@ function createShadeSpectrum(color) {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 	if (!color) color = "#f00";
-	ctx.fillStyle = color;
+
+	var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+  // Create color gradient
+  gradient.addColorStop(0,    "rgb(255,   0,   0)");
+  gradient.addColorStop(0.15, "rgb(255,   0, 255)");
+  gradient.addColorStop(0.33, "rgb(0,     0, 255)");
+  gradient.addColorStop(0.49, "rgb(0,   255, 255)");
+  gradient.addColorStop(0.67, "rgb(0,   255,   0)");
+  gradient.addColorStop(0.84, "rgb(255, 255,   0)");
+  gradient.addColorStop(1,    "rgb(255,   0,   0)");
+  // Apply gradient to canvas
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Create semi transparent gradient (white -> trans. -> black)
+  gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  gradient.addColorStop(0,   "rgba(255, 255, 255, 1)");
+  gradient.addColorStop(0.5, "rgba(255, 255, 255, 0)");
+  gradient.addColorStop(0.5, "rgba(0,     0,   0, 0)");
+  gradient.addColorStop(1,   "rgba(0,     0,   0, 1)");
+  // Apply gradient to canvas
+  ctx.fillStyle = gradient;
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-	var whiteGradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-	whiteGradient.addColorStop(0, "#fff");
-	whiteGradient.addColorStop(1, "transparent");
-	ctx.fillStyle = whiteGradient;
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-	var blackGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-	blackGradient.addColorStop(0, "transparent");
-	blackGradient.addColorStop(1, "#000");
-	ctx.fillStyle = blackGradient;
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	canvas.addEventListener("mousedown", function(e) {
 		startGetSpectrumColor(e);
@@ -171,7 +181,7 @@ function getSpectrumColor(e) {
 	// got some help here - http://stackoverflow.com/questions/23520909/get-hsl-value-given-x-y-and-hue
 	e.preventDefault();
 	//get x/y coordinates
-	
+
 	var x = e.pageX - spectrumRect.left;
 	var y = e.pageY - spectrumRect.top;
 	//constrain x max
