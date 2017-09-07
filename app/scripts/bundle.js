@@ -15,11 +15,6 @@ var spectrumCtx = spectrumCanvas.getContext("2d");
 var spectrumCursor = document.getElementById("spectrum-cursor");
 var spectrumRect = spectrumCanvas.getBoundingClientRect();
 
-var hueCanvas = document.getElementById("hue-canvas");
-var hueCtx = hueCanvas.getContext("2d");
-var hueCursor = document.getElementById("hue-cursor");
-var hueRect = hueCanvas.getBoundingClientRect();
-
 var currentColor = "";
 var hue = 0;
 var saturation = 1;
@@ -35,12 +30,10 @@ var hex = document.getElementById("hex");
 
 function ColorPicker() {
 	createShadeSpectrum();
-	createHueSpectrum();
 }
 
 function refreshElementRects() {
 	spectrumRect = spectrumCanvas.getBoundingClientRect();
-	hueRect = hueCanvas.getBoundingClientRect();
 }
 
 function createShadeSpectrum(color) {
@@ -79,24 +72,6 @@ function createShadeSpectrum(color) {
 	});
 }
 
-function createHueSpectrum() {
-	var canvas = hueCanvas;
-	var ctx = hueCtx;
-	var hueGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-	hueGradient.addColorStop(0.0, "hsl(0,100%,50%)");
-	hueGradient.addColorStop(0.17, "hsl(298.8, 100%, 50%)");
-	hueGradient.addColorStop(0.33, "hsl(241.2, 100%, 50%)");
-	hueGradient.addColorStop(0.5, "hsl(180, 100%, 50%)");
-	hueGradient.addColorStop(0.67, "hsl(118.8, 100%, 50%)");
-	hueGradient.addColorStop(0.83, "hsl(61.2,100%,50%)");
-	hueGradient.addColorStop(1.0, "hsl(360,100%,50%)");
-	ctx.fillStyle = hueGradient;
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
-	canvas.addEventListener("mousedown", function(e) {
-		startGetHueColor(e);
-	});
-}
-
 function colorToHue(color) {
 	var color = tinycolor(color);
 	var hueString = tinycolor("hsl " + color.toHsl().h + " 1 .5").toHslString();
@@ -112,7 +87,6 @@ function colorToPos(color) {
 	var y = spectrumRect.height * (1 - hsv.v);
 	var hueY = hueRect.height - hue / 360 * hueRect.height;
 	updateSpectrumCursor(x, y);
-	updateHueCursor(hueY);
 	setCurrentColor(color);
 	createShadeSpectrum(colorToHue(color));
 }
@@ -156,11 +130,6 @@ function setCurrentColor(color) {
 	colorIndicator.style.backgroundColor = color;
 	document.body.style.backgroundColor = color;
 	spectrumCursor.style.backgroundColor = color;
-	hueCursor.style.backgroundColor = "hsl(" + color.toHsl().h + ", 100%, 50%)";
-}
-
-function updateHueCursor(y) {
-	hueCursor.style.top = y + "px";
 }
 
 function updateSpectrumCursor(x, y) {
@@ -201,7 +170,7 @@ function getSpectrumColor(e) {
 	var yRatio = y / spectrumRect.height * 100;
 	var hsvValue = 1 - yRatio / 100;
 	var hsvSaturation = xRatio / 100;
-	var percent = y / spectrumRect.height;
+	var percent = x / spectrumRect.width;
 	hue = 360 - 360 * percent;
 	lightness = hsvValue / 2 * (2 - hsvSaturation);
 	saturation = hsvValue * hsvSaturation / (1 - Math.abs(2 * lightness - 1));
@@ -215,38 +184,6 @@ function getSpectrumColor(e) {
 function endGetSpectrumColor(e) {
 	spectrumCursor.classList.remove("dragging");
 	window.removeEventListener("mousemove", getSpectrumColor);
-}
-
-function startGetHueColor(e) {
-	getHueColor(e);
-	hueCursor.classList.add("dragging");
-	window.addEventListener("mousemove", getHueColor);
-	window.addEventListener("mouseup", endGetHueColor);
-}
-
-function getHueColor(e) {
-	e.preventDefault();
-	var y = e.pageY - hueRect.top;
-	if (y > hueRect.height) {
-		y = hueRect.height;
-	}
-	if (y < 0) {
-		y = 0;
-	}
-	var percent = y / hueRect.height;
-	hue = 360 - 360 * percent;
-	var hueColor = tinycolor("hsl " + hue + " 1 .5").toHslString();
-	var color = tinycolor("hsl " + hue + " " + saturation + " " + lightness).toHslString();
-	createShadeSpectrum(hueColor);
-	updateHueCursor(y, hueColor);
-	console.log(color, "hue func");
-	setCurrentColor(color);
-	setColorValues(color);
-}
-
-function endGetHueColor(e) {
-	hueCursor.classList.remove("dragging");
-	window.removeEventListener("mousemove", getHueColor);
 }
 
 // Add event listeners
