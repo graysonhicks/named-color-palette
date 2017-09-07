@@ -1,4 +1,4 @@
-## named color palette
+## Pallypal
 
 Generate a color palette based on a chosen color.  Provides semantic named color variables i.e `$ocean-blue` instead of `rbg(0, 0, 50)` or `$primary-color-0-0-1`, as often seen in other palette generators.  The actual values will be provided as hex values.
 
