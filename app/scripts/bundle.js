@@ -28,6 +28,7 @@ var blue = document.getElementById("blue");
 var green = document.getElementById("green");
 var hex = document.getElementById("hex");
 var name = document.getElementById("name");
+var scheme = document.getElementById("scheme");
 
 function ColorPicker() {
   createShadeSpectrum();
@@ -90,6 +91,7 @@ function colorToPos(color) {
 	setColorValues(color);
   setCurrentColor(color);
   createShadeSpectrum(colorToHue(color));
+	enableSchemePicker();
 }
 
 function setColorValues(color) {
@@ -99,10 +101,8 @@ function setColorValues(color) {
   var hexValue = color.toHex();
   var hueValue = color.toHsl().h;
   var scheme = new ColorScheme();
-  scheme.from_hue(hueValue). // Start the scheme
-  scheme("mono") // Use the 'triade' scheme, that is, colors
-  // selected from 3 points equidistant around
-  // the color wheel.
+  scheme.from_hue(hueValue).
+  scheme("mono")
     .variation("default"); // Use the 'soft' color variation
 
   var colors = scheme.colors();
@@ -146,6 +146,7 @@ var startGetSpectrumColor = function(e) {
 
 function getSpectrumColor(e) {
   // got some help here - http://stackoverflow.com/questions/23520909/get-hsl-value-given-x-y-and-hue
+
   e.preventDefault();
   //get x/y coordinates
 
@@ -170,19 +171,25 @@ function getSpectrumColor(e) {
   var hsvValue = 1 - yRatio / 100;
   var hsvSaturation = xRatio / 100;
   var percent = x / spectrumRect.width;
+
   hue = 360 - 360 * percent;
   lightness = hsvValue / 2 * (2 - hsvSaturation);
   saturation = hsvValue * hsvSaturation / (1 - Math.abs(2 * lightness - 1));
-  var color = tinycolor("hsl " + hue + " " + saturation + " " + lightness);
 
+  var color = tinycolor("hsl " + hue + " " + saturation + " " + lightness);
   setCurrentColor(color);
   setColorValues(color);
   updateSpectrumCursor(x, y);
+	enableSchemePicker();
 }
 
 function endGetSpectrumColor(e) {
   spectrumCursor.classList.remove("dragging");
   window.removeEventListener("mousemove", getSpectrumColor);
+}
+
+function enableSchemePicker(){
+	scheme.disabled = false;
 }
 
 // Add event listeners
