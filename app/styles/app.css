@@ -8280,6 +8280,9 @@ body {
 .hex-field .field-input {
   width: 170px; }
 
+.name-field .field-input {
+  width: auto; }
+
 .color-indicator {
   display: inline-block;
   vertical-align: middle;

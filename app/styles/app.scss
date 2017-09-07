@@ -207,6 +207,12 @@ body {
 	}
 }
 
+.name-field {
+	.field-input {
+		width: auto;
+	}
+}
+
 .color-indicator {
 	display: inline-block;
 	vertical-align: middle;

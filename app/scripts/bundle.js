@@ -27,6 +27,7 @@ var red = document.getElementById("red");
 var blue = document.getElementById("blue");
 var green = document.getElementById("green");
 var hex = document.getElementById("hex");
+var name = document.getElementById("name");
 
 function ColorPicker() {
   createShadeSpectrum();
@@ -111,15 +112,15 @@ function setColorValues(color) {
     $("#colors-list").append("<span class='named-color-block' style='background-color:#" + colors[i] + ";'>" + ntcColor[1] + "</span>");
   }
 
-  //
-  // hexValue = ntc.name("#" + hexValue);
-  // hexValue = hexValue[1];
+
+
 
   //set inputs
   red.value = rgbValues.r;
   green.value = rgbValues.g;
   blue.value = rgbValues.b;
   hex.value = "#" + hexValue;
+	name.value = ntc.name("#" + hexValue)[1];
 }
 
 function setCurrentColor(color) {
