@@ -164,13 +164,15 @@ body {
 
 	.field-label {
 		margin-right: 6px;
+		font-family: 'Futura';
+		color: white;
 	}
 
 	.field-input {
 		background: $color-input-bg;
 		border: 1px solid $color-ui-border;
 		box-sizing: border-box;
-		border-radius: 2px;
+		border-radius: 5px;
 		line-height: $input-height - 2px;
 		padding: 0 4px;
 		text-align: center;
