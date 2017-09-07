@@ -123,10 +123,9 @@ function setColorValues(color) {
 	var hexValue = color.toHex();
 	var hueValue = color.toHsl().h;
 	var scheme = new ColorScheme();
-	console.log(hueValue);
 	scheme
 		.from_hue(hueValue) // Start the scheme
-		.scheme("triade") // Use the 'triade' scheme, that is, colors
+		.scheme("mono") // Use the 'triade' scheme, that is, colors
 		// selected from 3 points equidistant around
 		// the color wheel.
 		.variation("default"); // Use the 'soft' color variation
@@ -201,9 +200,12 @@ function getSpectrumColor(e) {
 	var yRatio = y / spectrumRect.height * 100;
 	var hsvValue = 1 - yRatio / 100;
 	var hsvSaturation = xRatio / 100;
+	var percent = y / spectrumRect.height;
+	hue = 360 - 360 * percent;
 	lightness = hsvValue / 2 * (2 - hsvSaturation);
 	saturation = hsvValue * hsvSaturation / (1 - Math.abs(2 * lightness - 1));
 	var color = tinycolor("hsl " + hue + " " + saturation + " " + lightness);
+	console.log(color);
 	setCurrentColor(color);
 	setColorValues(color);
 	updateSpectrumCursor(x, y);
@@ -236,6 +238,7 @@ function getHueColor(e) {
 	var color = tinycolor("hsl " + hue + " " + saturation + " " + lightness).toHslString();
 	createShadeSpectrum(hueColor);
 	updateHueCursor(y, hueColor);
+	console.log(color, "hue func");
 	setCurrentColor(color);
 	setColorValues(color);
 }
