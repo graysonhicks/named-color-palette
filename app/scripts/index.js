@@ -27,7 +27,7 @@ var blue = document.getElementById("blue");
 var green = document.getElementById("green");
 var hex = document.getElementById("hex");
 var name = document.getElementById("name");
-var scheme = document.getElementById("scheme");
+var schemeMode = document.getElementById("scheme-mode");
 
 function ColorPicker() {
   createShadeSpectrum();
@@ -101,7 +101,7 @@ function setColorValues(color) {
   var hueValue = color.toHsl().h;
   var scheme = new ColorScheme();
   scheme.from_hue(hueValue).
-  scheme("mono")
+  scheme(schemeMode.value)
     .variation("default"); // Use the 'soft' color variation
 
   var colors = scheme.colors();
@@ -115,9 +115,6 @@ function setColorValues(color) {
 		span.innerHTML = ntcColor[1]
 		colorsList.appendChild(span);
   }
-
-
-
 
   //set inputs
   red.value = rgbValues.r;
@@ -193,7 +190,7 @@ function endGetSpectrumColor(e) {
 }
 
 function enableSchemePicker(){
-	scheme.disabled = false;
+	schemeMode.disabled = false;
 }
 
 // Add event listeners
@@ -215,6 +212,11 @@ blue.addEventListener("change", function() {
 
 hex.addEventListener("change", function() {
   var color = tinycolor(hex.value);
+  colorToPos(color);
+});
+
+schemeMode.addEventListener("change", function() {
+  var color = tinycolor(currentColor);
   colorToPos(color);
 });
 

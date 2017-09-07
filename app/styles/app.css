@@ -8283,10 +8283,10 @@ body {
 .name-field .field-input {
   width: auto; }
 
-.scheme-field .field-input {
+.scheme-mode-field .field-input {
   width: auto;
   height: 40px; }
-  .scheme-field .field-input:disabled {
+  .scheme-mode-field .field-input:disabled {
     background-color: #364347; }
 
 .color-indicator {
