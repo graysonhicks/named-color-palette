@@ -43,7 +43,10 @@ body {
 .named-color-block {
 	display: flex;
 	flex: 1;
-	align-items: center;
+	align-items: baseline;
+	padding-top: $spacer;
+	padding-left: $spacer / 2;
+	padding-right: $spacer / 2;
 	justify-content: center;
 	height: 100%;
 	text-align: center;
@@ -210,14 +213,15 @@ body {
 .name-field {
 	.field-input {
 		width: auto;
+		text-transform: uppercase;
 	}
 }
-
 
 .scheme-mode-field {
 	.field-input {
 		width: auto;
 		height: $input-height;
+
 		&:disabled {
 			background-color: $color-ui-border;
 		}

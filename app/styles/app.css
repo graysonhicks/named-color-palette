@@ -8151,7 +8151,10 @@ body {
 .named-color-block {
   display: flex;
   flex: 1;
-  align-items: center;
+  align-items: baseline;
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
   justify-content: center;
   height: 100%;
   text-align: center;
@@ -8281,7 +8284,8 @@ body {
   width: 170px; }
 
 .name-field .field-input {
-  width: auto; }
+  width: auto;
+  text-transform: uppercase; }
 
 .scheme-mode-field .field-input {
   width: auto;
