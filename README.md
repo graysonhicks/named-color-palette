@@ -5,7 +5,8 @@ Generate a color palette based on a chosen color.  Provides semantic named color
 # TODO
 1. export to stylesheet
 2. mobile
-3. credits within code
+3. refactor as plugin
+4. credits within code
 
 # Credits
 
