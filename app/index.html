@@ -9,9 +9,8 @@
 </head>
 
 <body>
-  <div id="colors-list"></div>
-  <div class="color-picker-panel">
-    <div class="panel-row">
+      <div id="colors-list"></div>
+
       <div class="spectrum-map">
         <button id="spectrum-cursor" class="color-cursor"></button>
         <canvas id="spectrum-canvas"></canvas>
@@ -19,9 +18,8 @@
       <div class="hue-map">
         <button id="hue-cursor" class="color-cursor"></button>
         <canvas id="hue-canvas"></canvas>
-      </div>
+
     </div>
-    <div class="panel-row">
       <div id="rgb-fields" class="field-group value-fields rgb-fields active">
         <div class="field-group">
           <label for="" class="field-label">R:</label>
@@ -35,7 +33,7 @@
           <label for="" class="field-label">B:</label>
           <input type="number" max="255" min="0" id="blue" class="field-input rgb-input" />
         </div>
-      </div>
+
       <div id="hex-field" class="field-group value-fields hex-field">
         <label for="" class="field-label">Hex:</label>
         <input type="text" id="hex" class="field-input" />
@@ -44,10 +42,6 @@
     </div>
 
     <span id="color-indicator" class="color-indicator"></span>
-
-  </div>
-  </div>
-
   <script src="scripts/bundle.js"></script>
 </body>
 

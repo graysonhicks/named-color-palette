@@ -8208,10 +8208,9 @@ body {
     pointer-events: none; }
 
 .spectrum-map {
-  position: relative;
-  width: 212px;
-  height: 200px;
-  overflow: hidden; }
+  position: absolute;
+  width: 100vw;
+  height: 100vh; }
 
 #spectrum-canvas {
   position: absolute;
