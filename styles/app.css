@@ -8135,22 +8135,30 @@ body {
   font-family: "Proxima Nova", sans-serif;
   color: #8b949a;
   letter-spacing: 0.05em;
-  transition: background 0.5s ease; }
+  transition: background 0.5s ease;
+  max-height: 100vh;
+  height: 100vh; }
 
 #colors-list {
   display: flex;
-  flex-direction: row; }
+  flex-direction: row;
+  width: 100%;
+  z-index: 999;
+  height: 20vh;
+  padding: 5px;
+  background-color: #364347; }
 
 .named-color-block {
   display: flex;
   flex: 1;
   align-items: center;
   justify-content: center;
-  height: 100px;
+  height: 100%;
   text-align: center;
   font-weight: bold;
   color: white;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }
+  text-transform: uppercase;
+  font-family: 'Futura', sans-serif; }
 
 .color-picker-panel {
   background: #1f232a;
@@ -8180,23 +8188,6 @@ body {
   margin: 0 -10px 10px;
   text-align: center; }
 
-.swatch {
-  display: inline-block;
-  width: 32px;
-  height: 32px;
-  background: #ccc;
-  border-radius: 4px;
-  margin-left: 4px;
-  margin-bottom: 4px;
-  box-sizing: border-box;
-  border: 2px solid #364347;
-  cursor: pointer; }
-
-.default-swatches {
-  width: 212px; }
-  .default-swatches .swatch:nth-child(6n + 1) {
-    margin-left: 0; }
-
 .color-cursor {
   border-radius: 100%;
   background: #ccc;
@@ -8213,22 +8204,13 @@ body {
     height: 30px;
     margin-left: -15px;
     margin-top: -15px;
-    top: 0;
-    left: 0; }
-  .color-cursor#hue-cursor {
-    top: 0;
-    left: 50%;
-    height: 20px;
-    width: 20px;
-    margin-top: -10px;
-    margin-left: -10px;
-    pointer-events: none; }
+    top: 50%;
+    left: 50%; }
 
 .spectrum-map {
-  position: relative;
-  width: 212px;
-  height: 200px;
-  overflow: hidden; }
+  position: absolute;
+  width: 100%;
+  height: 80vh; }
 
 #spectrum-canvas {
   position: absolute;
@@ -8238,24 +8220,6 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #ccc; }
-
-.hue-map {
-  position: absolute;
-  top: 5px;
-  bottom: 5px;
-  right: 29px;
-  width: 10px; }
-
-#hue-canvas {
-  border-radius: 8px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background: #ccc; }
 
 .button {
@@ -8277,17 +8241,6 @@ body {
     width: 68px;
     height: 68px;
     display: block; }
-  .button.add-swatch {
-    display: block;
-    padding: 6px;
-    width: 200px;
-    margin: 10px auto 0; }
-  .button.mode-toggle {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 68px;
-    height: 40px; }
 
 .value-fields {
   display: none;
@@ -8295,28 +8248,46 @@ body {
   .value-fields.active {
     display: flex; }
   .value-fields .field-label {
-    margin-right: 6px; }
+    margin-right: 6px;
+    font-family: 'Futura', sans-serif;
+    color: white; }
   .value-fields .field-input {
     background: #15191c;
     border: 1px solid #364347;
     box-sizing: border-box;
-    border-radius: 2px;
+    border-radius: 5px;
     line-height: 38px;
     padding: 0 4px;
     text-align: center;
     color: #8b949a;
-    font-size: 1rem;
+    font-size: 1.5rem;
     display: block; }
 
-.rgb-fields .field-group {
+.rgb-fields {
   display: flex;
-  align-items: center; }
-.rgb-fields .field-input {
-  width: 42px;
-  margin-right: 10px; }
+  flex-direction: row;
+  position: absolute;
+  bottom: 10px;
+  width: 100%; }
+  .rgb-fields .field-group {
+    display: flex;
+    align-items: center;
+    margin-left: 10px; }
+  .rgb-fields .field-input {
+    width: 42px;
+    margin-right: 10px; }
 
 .hex-field .field-input {
   width: 170px; }
+
+.name-field .field-input {
+  width: auto; }
+
+.scheme-mode-field .field-input {
+  width: auto;
+  height: 40px; }
+  .scheme-mode-field .field-input:disabled {
+    background-color: #364347; }
 
 .color-indicator {
   display: inline-block;
@@ -8327,8 +8298,8 @@ body {
   border-radius: 4px;
   background: #ccc; }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
   /* display: none; <- Crashes Chrome on hover */
   -webkit-appearance: none;
   margin: 0;
