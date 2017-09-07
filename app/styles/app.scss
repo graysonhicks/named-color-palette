@@ -213,6 +213,17 @@ body {
 	}
 }
 
+
+.scheme-field {
+	.field-input {
+		width: auto;
+		height: $input-height;
+		&:disabled {
+			background-color: $color-ui-border;
+		}
+	}
+}
+
 .color-indicator {
 	display: inline-block;
 	vertical-align: middle;
