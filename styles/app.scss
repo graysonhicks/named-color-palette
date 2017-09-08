@@ -7,6 +7,7 @@ $color-ui-panel-dark: #15191c;
 $color-ui-panel-light: #2a3137;
 $color-ui-border: #364347;
 $color-input-bg: #15191c;
+$persian-green: rgb(0, 161, 140);
 $color-swatch-border: #fff;
 $color-text: #8b949a;
 $spacer: 10px;
@@ -54,6 +55,34 @@ body {
 	color: white;
 	text-transform: uppercase;
 	font-family: 'Futura', sans-serif;
+}
+
+#export-button-group {
+	position: absolute;
+	z-index: 999;
+	right: 0;
+
+	#export-button {
+		cursor: pointer;
+		background-color: $persian-green;
+		border-radius: 0;
+		border: none;
+		display: inline-block;
+		color: white;
+		font-family: 'Futura';
+		text-transform: uppercase;
+
+		&:disabled {
+			background-color: $color-ui-panel-light;
+			cursor: not-allowed;
+		}
+	}
+
+	.dropdown-menu {
+		right: 0;
+		float: right;
+		left: auto;
+	}
 }
 
 .color-picker-panel {
