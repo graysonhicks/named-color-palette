@@ -8163,19 +8163,23 @@ body {
   text-transform: uppercase;
   font-family: 'Futura', sans-serif; }
 
-#export-button {
+#export-button-group {
   position: absolute;
   z-index: 999;
   right: 0; }
-  #export-button .btn {
+  #export-button-group #export-button {
+    cursor: pointer;
     background-color: #00a18c;
-    border-radius: 0px;
+    border-radius: 0;
     border: none;
     display: inline-block;
     color: white;
     font-family: 'Futura';
     text-transform: uppercase; }
-  #export-button .dropdown-menu {
+    #export-button-group #export-button:disabled {
+      background-color: #2a3137;
+      cursor: not-allowed; }
+  #export-button-group .dropdown-menu {
     right: 0;
     float: right;
     left: auto; }

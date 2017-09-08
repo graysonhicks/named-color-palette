@@ -57,18 +57,25 @@ body {
 	font-family: 'Futura', sans-serif;
 }
 
-#export-button {
+#export-button-group {
 	position: absolute;
 	z-index: 999;
 	right: 0;
-	.btn {
-			background-color: $persian-green;
-			border-radius: 0px;
-			border: none;
-			display: inline-block;
-			color: white;
-			font-family: 'Futura';
-			text-transform: uppercase;
+
+	#export-button {
+		cursor: pointer;
+		background-color: $persian-green;
+		border-radius: 0;
+		border: none;
+		display: inline-block;
+		color: white;
+		font-family: 'Futura';
+		text-transform: uppercase;
+
+		&:disabled {
+			background-color: $color-ui-panel-light;
+			cursor: not-allowed;
+		}
 	}
 
 	.dropdown-menu {
@@ -76,7 +83,6 @@ body {
 		float: right;
 		left: auto;
 	}
-
 }
 
 .color-picker-panel {

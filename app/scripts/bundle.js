@@ -30,6 +30,8 @@ var green = document.getElementById("green");
 var hex = document.getElementById("hex");
 var name = document.getElementById("name");
 var schemeMode = document.getElementById("scheme-mode");
+var exportButton = document.getElementById("export-button");
+var exportButtons = document.querySelectorAll(".export-buttons");
 
 function ColorPicker() {
   createShadeSpectrum();
@@ -89,10 +91,11 @@ function colorToPos(color) {
   var x = spectrumRect.width - hue / 360 * spectrumRect.width;
   var y = spectrumRect.height * (1 - hsv.v);
   updateSpectrumCursor(x, y);
-	setColorValues(color);
+  setColorValues(color);
   setCurrentColor(color);
   createShadeSpectrum(colorToHue(color));
-	enableSchemePicker();
+  enableSchemePicker();
+  enableExport();
 }
 
 function setColorValues(color) {
@@ -101,29 +104,36 @@ function setColorValues(color) {
   var rgbValues = color.toRgb();
   var hexValue = color.toHex();
   var hueValue = color.toHsl().h;
-  var scheme = new ColorScheme();
-  scheme.from_hue(hueValue).
-  scheme(schemeMode.value)
-    .variation("default"); // Use the 'soft' color variation
-
-  var colors = scheme.colors();
-	var colorsList = document.getElementById("colors-list");
-	while(colorsList.firstChild) colorsList.removeChild(colorsList.firstChild)
-  for (var i = 0; i < colors.length; i++) {
-    var ntcColor = ntc.name("#" + colors[i]);
-		var span = document.createElement("span");
-		span.classList.add('named-color-block');
-		span.style.backgroundColor = '#' + colors[i];
-		span.innerHTML = ntcColor[1]
-		colorsList.appendChild(span);
-  }
 
   //set inputs
   red.value = rgbValues.r;
   green.value = rgbValues.g;
   blue.value = rgbValues.b;
   hex.value = "#" + hexValue;
-	name.value = ntc.name("#" + hexValue)[1];
+  name.value = ntc.name("#" + hexValue)[1];
+
+  var scheme = new ColorScheme();
+  scheme.from_hue(hueValue).scheme(schemeMode.value).variation("default"); // Use the 'soft' color variation
+
+  var colors = scheme.colors();
+  buildColorListBar(colors);
+}
+
+function buildColorListBar(colors) {
+  var colorsList = document.getElementById("colors-list");
+  // empty colors list of previous colors
+  while (colorsList.firstChild)
+    colorsList.removeChild(colorsList.firstChild)
+  for (var i = 0; i < colors.length; i++) {
+    var ntcColor = ntc.name("#" + colors[i]);
+    var span = document.createElement("span");
+    span.classList.add('named-color-block');
+    span.style.backgroundColor = '#' + colors[i];
+    span.innerHTML = ntcColor[1]
+    span.setAttribute("data-code", colors[i]);
+    span.setAttribute("data-name", ntcColor[1]);
+    colorsList.appendChild(span);
+  }
 }
 
 function setCurrentColor(color) {
@@ -183,7 +193,8 @@ function getSpectrumColor(e) {
   setCurrentColor(color);
   setColorValues(color);
   updateSpectrumCursor(x, y);
-	enableSchemePicker();
+  enableSchemePicker();
+  enableExport();
 }
 
 function endGetSpectrumColor(e) {
@@ -191,8 +202,30 @@ function endGetSpectrumColor(e) {
   window.removeEventListener("mousemove", getSpectrumColor);
 }
 
-function enableSchemePicker(){
-	schemeMode.disabled = false;
+function enableSchemePicker() {
+  schemeMode.disabled = false;
+}
+
+function enableExport() {
+  exportButton.disabled = false;
+}
+
+function buildDataforAjax(e){
+  var post = {};
+  var colorBlocks = document.querySelectorAll(".named-color-block");
+  post.colors = [];
+  post.type = e.currentTarget.dataset.type;
+
+  for (var i = 0; i < colorBlocks.length; i++) {
+    var color = {
+      name: colorBlocks[i].dataset.name,
+      code: colorBlocks[i].dataset.code
+    };
+    post.colors.push(color);
+  }
+
+  console.log(post);
+
 }
 
 // Add event listeners
@@ -221,6 +254,13 @@ schemeMode.addEventListener("change", function() {
   var color = tinycolor(currentColor);
   colorToPos(color);
 });
+
+for (var i = 0; i < exportButtons.length; i++) {
+  exportButtons[i].addEventListener("click", function(e) {
+    var data = buildDataforAjax(e);
+  });
+}
+
 
 window.addEventListener("resize", function() {
   refreshElementRects();
