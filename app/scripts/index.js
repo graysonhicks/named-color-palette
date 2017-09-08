@@ -209,7 +209,7 @@ function enableExport() {
   exportButton.disabled = false;
 }
 
-function buildDataforAjax(e){
+function buildDataforAjax(e) {
   var post = {};
   var colorBlocks = document.querySelectorAll(".named-color-block");
   post.colors = [];
@@ -223,8 +223,13 @@ function buildDataforAjax(e){
     post.colors.push(color);
   }
 
+  postToGetFile(post);
+}
+
+function postToGetFile(post) {
   console.log(post);
 
+  $.ajax({type: "POST", url: "https://pallypal.herokuapp.com/build", data: JSON.stringify(post), contentType: "application/json"});
 }
 
 // Add event listeners
@@ -259,7 +264,6 @@ for (var i = 0; i < exportButtons.length; i++) {
     var data = buildDataforAjax(e);
   });
 }
-
 
 window.addEventListener("resize", function() {
   refreshElementRects();
