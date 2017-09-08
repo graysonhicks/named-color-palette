@@ -8147,6 +8147,15 @@ body {
   height: 20vh;
   padding: 5px;
   background-color: #364347; }
+  #colors-list h1,
+  #colors-list h5 {
+    align-items: center;
+    display: flex;
+    justify-content: center; }
+  #colors-list h1 {
+    flex: 1; }
+  #colors-list h5 {
+    flex: 1.5; }
 
 .named-color-block {
   flex: 1;

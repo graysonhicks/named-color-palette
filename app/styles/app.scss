@@ -40,6 +40,18 @@ body {
 	height: 20vh;
 	padding: 5px;
 	background-color: $color-ui-border;
+	h1,
+	h5 {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+	}
+	h1 {
+		flex: 1;
+	}
+	h5 {
+		flex: 1.5;
+	}
 }
 
 .named-color-block {
