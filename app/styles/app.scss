@@ -20,10 +20,11 @@ $map-width: $swatches-width;
 $eyedropper-width: $swatch-width*2 + $swatch-space;
 $window-width: $swatches-width + $eyedropper-width + $spacer*3;
 $spectrum-cursor-width: 30px;
+$font-main: "Muli", "sans-serif";
 
 body {
 	background: $color-ui-panel;
-	font-family: "Proxima Nova", sans-serif;
+	font-family: $font-main;
 	color: $color-text;
 	letter-spacing: 0.05em;
 	transition: background 0.5s ease;
@@ -54,7 +55,6 @@ body {
 	font-weight: bold;
 	color: white;
 	text-transform: uppercase;
-	font-family: "Futura", sans-serif;
 
 	.hex-span {
 		display: block;
@@ -76,7 +76,6 @@ body {
 		border: none;
 		display: inline-block;
 		color: white;
-		font-family: "Futura";
 		text-transform: uppercase;
 
 		&:disabled {
@@ -203,7 +202,6 @@ body {
 
 	.field-label {
 		margin-right: 6px;
-		font-family: "Futura", sans-serif;
 		color: white;
 	}
 
