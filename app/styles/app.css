@@ -8151,7 +8151,8 @@ body {
   #colors-list h5 {
     align-items: center;
     display: flex;
-    justify-content: center; }
+    justify-content: center;
+    color: white; }
   #colors-list h1 {
     flex: 1; }
   #colors-list h5 {
