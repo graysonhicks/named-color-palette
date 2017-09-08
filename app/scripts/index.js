@@ -1,6 +1,7 @@
 window.jQuery = $ = require("jquery");
 var $ = require("jquery");
 var _ = require("underscore");
+var bootstrap = require("bootstrap");
 // Required these in by default, feel free to add more.
 var tinycolor = require("tinycolor2");
 //https://github.com/bgrins/TinyColor

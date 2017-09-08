@@ -8163,6 +8163,23 @@ body {
   text-transform: uppercase;
   font-family: 'Futura', sans-serif; }
 
+#export-button {
+  position: absolute;
+  z-index: 999;
+  right: 0; }
+  #export-button .btn {
+    background-color: #00a18c;
+    border-radius: 0px;
+    border: none;
+    display: inline-block;
+    color: white;
+    font-family: 'Futura';
+    text-transform: uppercase; }
+  #export-button .dropdown-menu {
+    right: 0;
+    float: right;
+    left: auto; }
+
 .color-picker-panel {
   background: #1f232a;
   width: 310px;
