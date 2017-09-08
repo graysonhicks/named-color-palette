@@ -10,7 +10,7 @@
 </head>
 
 <body>
-      <div id="colors-list"></div>
+      <div id="colors-list"><h1>PallyPal</h1><h5>Click to generate a palette with semantically named color variables. Use the inputs below to start with a known color or change the scheme. Export to style of your choice! Enjoy!</h5></div>
       <div class="btn-group" id="export-button-group">
         <button type="button" id="export-button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
           Export <span class="caret"></span>
@@ -27,38 +27,38 @@
         <canvas id="spectrum-canvas"></canvas>
       </div>
 
-    <div id="rgb-fields" class="field-group value-fields rgb-fields active">
-      <div class="field-group">
-        <label for="" class="field-label">R:</label>
-        <input type="number" max="255" min="0" id="red" class="field-input rgb-input" />
-      </div>
-      <div class="field-group">
-        <label for="" class="field-label">G:</label>
-        <input type="number" max="255" min="0" id="green" class="field-input rgb-input" />
-      </div>
-      <div class="field-group">
-        <label for="" class="field-label">B:</label>
-        <input type="number" max="255" min="0" id="blue" class="field-input rgb-input" />
-      </div>
+        <div id="rgb-fields" class="field-group value-fields rgb-fields active">
+          <div class="field-group">
+            <label for="" class="field-label">R:</label>
+            <input type="number" max="255" min="0" id="red" class="field-input rgb-input" />
+          </div>
+          <div class="field-group">
+            <label for="" class="field-label">G:</label>
+            <input type="number" max="255" min="0" id="green" class="field-input rgb-input" />
+          </div>
+          <div class="field-group">
+            <label for="" class="field-label">B:</label>
+            <input type="number" max="255" min="0" id="blue" class="field-input rgb-input" />
+          </div>
 
-    <div id="hex-field" class="field-group value-fields hex-field">
-      <label for="" class="field-label">Hex:</label>
-      <input type="text" id="hex" class="field-input" />
-    </div>
-    <div id="name-field" class="field-group value-fields name-field">
-      <label for="" class="field-label">Name:</label>
-      <input type="text" id="name" class="field-input" />
-    </div>
-    <div id="scheme-mode-field" class="field-group value-fields scheme-mode-field">
-      <label for="" class="field-label">Scheme:</label>
-      <select id="scheme-mode" class="field-input" disabled>
-        <option value="mono">Mono</option>
-        <option value="triade">Triade</option>
-        <option value="contrast">Contrast</option>
-        <option value="tetrade">Tetrade</option>
-        <option value="analogic">Analogic</option>
-      </select>
-    </div>
+        <div id="hex-field" class="field-group value-fields hex-field">
+          <label for="" class="field-label">Hex:</label>
+          <input type="text" id="hex" class="field-input" />
+        </div>
+        <div id="name-field" class="field-group value-fields name-field">
+          <label for="" class="field-label">Name:</label>
+          <input type="text" id="name" class="field-input" />
+        </div>
+        <div id="scheme-mode-field" class="field-group value-fields scheme-mode-field">
+          <label for="" class="field-label">Scheme:</label>
+          <select id="scheme-mode" class="field-input" disabled>
+            <option value="mono">Mono</option>
+            <option value="triade">Triade</option>
+            <option value="contrast">Contrast</option>
+            <option value="tetrade">Tetrade</option>
+            <option value="analogic">Analogic</option>
+          </select>
+        </div>
     <span id="color-indicator" class="field-group color-indicator"></span>
   </div>
   <script src="scripts/bundle.js"></script>
