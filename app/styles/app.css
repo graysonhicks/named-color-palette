@@ -8149,8 +8149,8 @@ body {
   background-color: #364347; }
 
 .named-color-block {
-  display: flex;
   flex: 1;
+  position: relative;
   align-items: baseline;
   padding-top: 10px;
   padding-left: 5px;
@@ -8161,7 +8161,12 @@ body {
   font-weight: bold;
   color: white;
   text-transform: uppercase;
-  font-family: 'Futura', sans-serif; }
+  font-family: "Futura", sans-serif; }
+  .named-color-block .hex-span {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    opacity: 0.7; }
 
 #export-button-group {
   position: absolute;
@@ -8174,7 +8179,7 @@ body {
     border: none;
     display: inline-block;
     color: white;
-    font-family: 'Futura';
+    font-family: "Futura";
     text-transform: uppercase; }
     #export-button-group #export-button:disabled {
       background-color: #2a3137;
@@ -8273,7 +8278,7 @@ body {
     display: flex; }
   .value-fields .field-label {
     margin-right: 6px;
-    font-family: 'Futura', sans-serif;
+    font-family: "Futura", sans-serif;
     color: white; }
   .value-fields .field-input {
     background: #15191c;
