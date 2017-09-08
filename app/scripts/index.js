@@ -229,7 +229,7 @@ function buildDataforAjax(e) {
 function postToGetFile(post) {
   console.log(post);
 
-  $.ajax({type: "GET", url: "https://pallypal.herokuapp.com/build", data: post});
+  $.ajax({type: "GET", url: "http://localhost:3000/build", data: post});
 }
 
 // Add event listeners
