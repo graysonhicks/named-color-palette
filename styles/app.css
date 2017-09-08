@@ -8132,7 +8132,7 @@ button.close {
 
 body {
   background: #1f232a;
-  font-family: "Proxima Nova", sans-serif;
+  font-family: "Muli", "sans-serif";
   color: #8b949a;
   letter-spacing: 0.05em;
   transition: background 0.5s ease;
@@ -8160,8 +8160,7 @@ body {
   text-align: center;
   font-weight: bold;
   color: white;
-  text-transform: uppercase;
-  font-family: "Futura", sans-serif; }
+  text-transform: uppercase; }
   .named-color-block .hex-span {
     display: block;
     position: absolute;
@@ -8179,7 +8178,6 @@ body {
     border: none;
     display: inline-block;
     color: white;
-    font-family: "Futura";
     text-transform: uppercase; }
     #export-button-group #export-button:disabled {
       background-color: #2a3137;
@@ -8278,7 +8276,6 @@ body {
     display: flex; }
   .value-fields .field-label {
     margin-right: 6px;
-    font-family: "Futura", sans-serif;
     color: white; }
   .value-fields .field-input {
     background: #15191c;
