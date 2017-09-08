@@ -8188,6 +8188,7 @@ body {
     border: none;
     display: inline-block;
     color: white;
+    font-weight: bold;
     text-transform: uppercase; }
     #export-button-group #export-button:disabled {
       background-color: #2a3137;
