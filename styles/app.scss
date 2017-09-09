@@ -22,7 +22,6 @@ $window-width: $swatches-width + $eyedropper-width + $spacer*3;
 $spectrum-cursor-width: 30px;
 $font-main: "Muli", "sans-serif";
 
-
 body {
 	background: $color-ui-panel;
 	font-family: $font-main;
@@ -261,12 +260,14 @@ body {
 
 .name-field {
 	.field-input {
+		color: white;
 		width: auto;
 		text-transform: uppercase;
 	}
 }
 
-.scheme-mode-field {
+.scheme-mode-field,
+.variation-mode-field {
 	.field-input {
 		width: auto;
 		height: $input-height;
@@ -275,16 +276,6 @@ body {
 			background-color: $color-ui-border;
 		}
 	}
-}
-
-.color-indicator {
-	display: inline-block;
-	vertical-align: middle;
-	margin-right: 10px;
-	width: 50px;
-	height: 50px;
-	border-radius: 4px;
-	background: #ccc;
 }
 
 input::-webkit-inner-spin-button,

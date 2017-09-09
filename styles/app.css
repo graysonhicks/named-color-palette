@@ -8318,23 +8318,17 @@ body {
   width: 170px; }
 
 .name-field .field-input {
+  color: white;
   width: auto;
   text-transform: uppercase; }
 
-.scheme-mode-field .field-input {
+.scheme-mode-field .field-input,
+.variation-mode-field .field-input {
   width: auto;
   height: 40px; }
-  .scheme-mode-field .field-input:disabled {
+  .scheme-mode-field .field-input:disabled,
+  .variation-mode-field .field-input:disabled {
     background-color: #364347; }
-
-.color-indicator {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 10px;
-  width: 50px;
-  height: 50px;
-  border-radius: 4px;
-  background: #ccc; }
 
 input::-webkit-inner-spin-button,
 input::-webkit-outer-spin-button {

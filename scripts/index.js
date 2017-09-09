@@ -8,8 +8,6 @@ var tinycolor = require("tinycolor2");
 var ntc = require("ntc");
 var ColorScheme = require("color-scheme");
 
-var colorIndicator = document.getElementById("color-indicator");
-
 var spectrumCanvas = document.getElementById("spectrum-canvas");
 var spectrumCtx = spectrumCanvas.getContext("2d");
 var spectrumCursor = document.getElementById("spectrum-cursor");
@@ -82,12 +80,13 @@ function colorToHue(color) {
 }
 
 function colorToPos(color) {
+
 	var color = tinycolor(color);
 	var hsl = color.toHsl();
 	hue = hsl.h;
 	var hsv = color.toHsv();
 	var x = spectrumRect.width - hue / 360 * spectrumRect.width;
-	var y = spectrumRect.height * (1 - hsv.v);
+	var y = spectrumRect.height * (1 - hsl.l);
 	updateSpectrumCursor(x, y);
 	setColorValues(color);
 	setCurrentColor(color);
@@ -109,6 +108,7 @@ function setColorValues(color) {
 	blue.value = rgbValues.b;
 	hex.value = "#" + hexValue;
 	name.value = ntc.name("#" + hexValue)[1];
+
 
 	var scheme = new ColorScheme();
 	scheme
@@ -146,7 +146,7 @@ function setCurrentColor(color) {
 	color = tinycolor(color);
 	console.log(color);
 	currentColor = color;
-	colorIndicator.style.backgroundColor = "#" + color.toHex();
+	name.style.backgroundColor = "#" + color.toHex();
 	document.body.style.backgroundColor = "#" + color.toHex();
 	spectrumCursor.style.backgroundColor = "#" + color.toHex();
 }
@@ -189,7 +189,7 @@ function getSpectrumColor(e) {
 	var xRatio = x / spectrumRect.width * 100;
 	var yRatio = y / spectrumRect.height * 100;
 	var hsvLightness = 1 - (yRatio / 100);
-	var hsvSaturation = 1 - (yRatio / 100);
+	var hsvSaturation = Math.max(.5, Math.min((yRatio / 100), 1));
 
 	var hsvValue = xRatio / 100;
 	var percent = x / spectrumRect.width;
@@ -198,7 +198,7 @@ function getSpectrumColor(e) {
 	// lightness = (hsvValue / 2) * (2 - hsvSaturation);
 	// saturation = hsvValue * 1 / (1 - Math.abs(2 * lightness - 1));
 
-	console.log(hue, saturation, lightness);
+	console.log(hue, hsvSaturation, hsvLightness);
 
 	var color = tinycolor("hsl " + hue + " " + hsvSaturation + " " + hsvLightness);
 	setCurrentColor(color);
