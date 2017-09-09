@@ -144,10 +144,11 @@ function buildColorListBar(colors) {
 
 function setCurrentColor(color) {
 	color = tinycolor(color);
+	console.log(color);
 	currentColor = color;
-	colorIndicator.style.backgroundColor = color;
-	document.body.style.backgroundColor = color;
-	spectrumCursor.style.backgroundColor = color;
+	colorIndicator.style.backgroundColor = "#" + color.toHex();
+	document.body.style.backgroundColor = "#" + color.toHex();
+	spectrumCursor.style.backgroundColor = "#" + color.toHex();
 }
 
 function updateSpectrumCursor(x, y) {
@@ -187,15 +188,19 @@ function getSpectrumColor(e) {
 	//convert between hsv and hsl
 	var xRatio = x / spectrumRect.width * 100;
 	var yRatio = y / spectrumRect.height * 100;
-	var hsvValue = 1 - yRatio / 100;
-	var hsvSaturation = xRatio / 100;
+	var hsvLightness = 1 - (yRatio / 100);
+	var hsvSaturation = 1 - (yRatio / 100);
+
+	var hsvValue = xRatio / 100;
 	var percent = x / spectrumRect.width;
 
 	hue = 360 - 360 * percent;
-	lightness = hsvValue / 2 * (2 - hsvSaturation);
-	saturation = hsvValue * hsvSaturation / (1 - Math.abs(2 * lightness - 1));
+	// lightness = (hsvValue / 2) * (2 - hsvSaturation);
+	// saturation = hsvValue * 1 / (1 - Math.abs(2 * lightness - 1));
 
-	var color = tinycolor("hsl " + hue + " " + saturation + " " + lightness);
+	console.log(hue, saturation, lightness);
+
+	var color = tinycolor("hsl " + hue + " " + hsvSaturation + " " + hsvLightness);
 	setCurrentColor(color);
 	setColorValues(color);
 	updateSpectrumCursor(x, y);
