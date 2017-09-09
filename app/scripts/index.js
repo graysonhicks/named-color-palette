@@ -8,8 +8,6 @@ var tinycolor = require("tinycolor2");
 var ntc = require("ntc");
 var ColorScheme = require("color-scheme");
 
-var colorIndicator = document.getElementById("color-indicator");
-
 var spectrumCanvas = document.getElementById("spectrum-canvas");
 var spectrumCtx = spectrumCanvas.getContext("2d");
 var spectrumCursor = document.getElementById("spectrum-cursor");
@@ -111,6 +109,7 @@ function setColorValues(color) {
 	hex.value = "#" + hexValue;
 	name.value = ntc.name("#" + hexValue)[1];
 
+
 	var scheme = new ColorScheme();
 	scheme
 		.from_hue(hueValue)
@@ -147,7 +146,7 @@ function setCurrentColor(color) {
 	color = tinycolor(color);
 	console.log(color);
 	currentColor = color;
-	colorIndicator.style.backgroundColor = "#" + color.toHex();
+	name.style.backgroundColor = "#" + color.toHex();
 	document.body.style.backgroundColor = "#" + color.toHex();
 	spectrumCursor.style.backgroundColor = "#" + color.toHex();
 }
