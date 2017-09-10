@@ -27,6 +27,7 @@ var green = document.getElementById("green");
 var hex = document.getElementById("hex");
 var name = document.getElementById("name");
 var schemeMode = document.getElementById("scheme-mode");
+var variationMode = document.getElementById("variation-mode");
 var exportButton = document.getElementById("export-button");
 var exportButtons = document.querySelectorAll(".export-buttons");
 
@@ -92,6 +93,7 @@ function colorToPos(color) {
 	setCurrentColor(color);
 	createShadeSpectrum(colorToHue(color));
 	enableSchemePicker();
+	enableVariationPicker();
 	enableExport();
 }
 
@@ -114,7 +116,7 @@ function setColorValues(color) {
 	scheme
 		.from_hue(hueValue)
 		.scheme(schemeMode.value)
-		.variation("default"); // Use the 'soft' color variation
+		.variation(variationMode.value); // Use the 'soft' color variation
 
 	var colors = scheme.colors();
 	buildColorListBar(colors);
@@ -143,12 +145,10 @@ function buildColorListBar(colors) {
 }
 
 function setCurrentColor(color) {
-	color = tinycolor(color);
-	console.log(color);
-	currentColor = color;
-	name.style.backgroundColor = "#" + color.toHex();
-	document.body.style.backgroundColor = "#" + color.toHex();
-	spectrumCursor.style.backgroundColor = "#" + color.toHex();
+	currentColor = tinycolor(color);
+	name.style.backgroundColor = "#" + currentColor.toHex();
+	document.body.style.backgroundColor = "#" + currentColor.toHex();
+	spectrumCursor.style.backgroundColor = "#" + currentColor.toHex();
 }
 
 function updateSpectrumCursor(x, y) {
@@ -205,6 +205,7 @@ function getSpectrumColor(e) {
 	setColorValues(color);
 	updateSpectrumCursor(x, y);
 	enableSchemePicker();
+	enableVariationPicker();
 	enableExport();
 }
 
@@ -217,6 +218,10 @@ function enableSchemePicker() {
 	schemeMode.disabled = false;
 }
 
+function enableVariationPicker() {
+	variationMode.disabled = false;
+}
+
 function enableExport() {
 	exportButton.disabled = false;
 }
@@ -224,6 +229,8 @@ function enableExport() {
 function buildDataforAjax(e) {
 	var post = {};
 	var colorBlocks = document.querySelectorAll(".named-color-block");
+	var currentColorHex = tinycolor(currentColor).toHex();
+
 	post.colors = [];
 	post.type = e.currentTarget.dataset.type;
 
@@ -234,6 +241,15 @@ function buildDataforAjax(e) {
 		};
 		post.colors.push(color);
 	}
+
+	post.colors.unshift({
+		name: ntc.name("#" + currentColorHex)[1],
+		code: currentColorHex
+
+	});
+
+	console.log(post);
+
 
 	postToGetFile(post);
 }
@@ -266,6 +282,11 @@ hex.addEventListener("change", function() {
 });
 
 schemeMode.addEventListener("change", function() {
+	var color = tinycolor(currentColor);
+	colorToPos(color);
+});
+
+variationMode.addEventListener("change", function() {
 	var color = tinycolor(currentColor);
 	colorToPos(color);
 });
