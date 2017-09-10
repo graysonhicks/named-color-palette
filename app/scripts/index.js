@@ -72,6 +72,10 @@ function createShadeSpectrum(color) {
 	canvas.addEventListener("mousedown", function(e) {
 		startGetSpectrumColor(e);
 	});
+
+	canvas.addEventListener("touchstart", function (e) {
+		startGetSpectrumColor(e);
+	}, false);
 }
 
 function colorToHue(color) {
@@ -157,21 +161,20 @@ function updateSpectrumCursor(x, y) {
 	spectrumCursor.style.top = y + "px";
 }
 
-var startGetSpectrumColor = function(e) {
-	getSpectrumColor(e);
-	spectrumCursor.classList.add("dragging");
-	window.addEventListener("mousemove", getSpectrumColor);
-	window.addEventListener("mouseup", endGetSpectrumColor);
-};
-
 function getSpectrumColor(e) {
 	// got some help here - http://stackoverflow.com/questions/23520909/get-hsl-value-given-x-y-and-hue
 
 	e.preventDefault();
 	//get x/y coordinates
+	console.log(e.targetTouches);
+	if(e.targetTouches){
+				var x = e.targetTouches[0].pageX - spectrumRect.left;
+				var y = e.targetTouches[0].pageY - spectrumRect.top;
+	} else {
+			var x = e.pageX - spectrumRect.left;
+			var y = e.pageY - spectrumRect.top;
+	}
 
-	var x = e.pageX - spectrumRect.left;
-	var y = e.pageY - spectrumRect.top;
 	//constrain x max
 	if (x > spectrumRect.width) {
 		x = spectrumRect.width;
@@ -209,9 +212,20 @@ function getSpectrumColor(e) {
 	enableExport();
 }
 
+var startGetSpectrumColor = function(e) {
+	getSpectrumColor(e);
+	spectrumCursor.classList.add("dragging");
+	window.addEventListener("mousemove", getSpectrumColor);
+	window.addEventListener("mouseup", endGetSpectrumColor);
+
+	window.addEventListener("touchmove", getSpectrumColor);
+	window.addEventListener("touchend", endGetSpectrumColor);
+};
+
 function endGetSpectrumColor(e) {
 	spectrumCursor.classList.remove("dragging");
 	window.removeEventListener("mousemove", getSpectrumColor);
+	window.removeEventListener("touchmove", getSpectrumColor);
 }
 
 function enableSchemePicker() {
@@ -248,7 +262,7 @@ function buildDataforAjax(e) {
 		code: currentColorHex,
 		is_current: true
 	});
-	
+
 	postToGetFile(post);
 }
 
