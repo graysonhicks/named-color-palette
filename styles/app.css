@@ -8344,4 +8344,42 @@ input::-webkit-outer-spin-button {
   margin: 0;
   /* <-- Apparently some margin are still there even though it's hidden */ }
 
+/* Medium devices (desktops, 992px and below) */
+@media (max-width: 992px) {
+  .rgb-fields,
+  .value-fields.active {
+    padding-left: 10px;
+    display: block;
+    position: relative;
+    margin-top: 25px; }
+    .rgb-fields .field-group,
+    .value-fields.active .field-group {
+      flex: 1;
+      float: left;
+      height: 60px;
+      margin: 0 auto; }
+    .rgb-fields .field-input,
+    .rgb-fields .field-label,
+    .value-fields.active .field-input,
+    .value-fields.active .field-label {
+      float: left;
+      display: inline-block; }
+    .rgb-fields .current-color-title-container,
+    .value-fields.active .current-color-title-container {
+      display: block;
+      width: 100%;
+      height: auto; }
+    .rgb-fields #current-color-title,
+    .value-fields.active #current-color-title {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: underline; }
+    .rgb-fields .rgb-inputs-container,
+    .value-fields.active .rgb-inputs-container {
+      display: none; }
+
+  .spectrum-map {
+    position: relative; } }
+
 /*# sourceMappingURL=app.css.map */
