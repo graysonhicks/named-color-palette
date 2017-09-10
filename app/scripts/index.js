@@ -151,7 +151,6 @@ function buildColorListBar(colors) {
 function setCurrentColor(color) {
 	currentColor = tinycolor(color);
 	name.style.backgroundColor = "#" + currentColor.toHex();
-	document.body.style.backgroundColor = "#" + currentColor.toHex();
 	spectrumCursor.style.backgroundColor = "#" + currentColor.toHex();
 }
 
