@@ -145,12 +145,10 @@ function buildColorListBar(colors) {
 }
 
 function setCurrentColor(color) {
-	color = tinycolor(color);
-	console.log(color);
-	currentColor = color;
-	name.style.backgroundColor = "#" + color.toHex();
-	document.body.style.backgroundColor = "#" + color.toHex();
-	spectrumCursor.style.backgroundColor = "#" + color.toHex();
+	currentColor = tinycolor(color);
+	name.style.backgroundColor = "#" + currentColor.toHex();
+	document.body.style.backgroundColor = "#" + currentColor.toHex();
+	spectrumCursor.style.backgroundColor = "#" + currentColor.toHex();
 }
 
 function updateSpectrumCursor(x, y) {
@@ -231,6 +229,8 @@ function enableExport() {
 function buildDataforAjax(e) {
 	var post = {};
 	var colorBlocks = document.querySelectorAll(".named-color-block");
+	var currentColorHex = tinycolor(currentColor).toHex();
+
 	post.colors = [];
 	post.type = e.currentTarget.dataset.type;
 
@@ -241,6 +241,15 @@ function buildDataforAjax(e) {
 		};
 		post.colors.push(color);
 	}
+
+	post.colors.unshift({
+		name: ntc.name("#" + currentColorHex)[1],
+		code: currentColorHex
+
+	});
+
+	console.log(post);
+
 
 	postToGetFile(post);
 }
