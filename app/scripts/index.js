@@ -132,7 +132,10 @@ function buildColorListBar(colors) {
 	while (colorsList.firstChild) colorsList.removeChild(colorsList.firstChild);
 	for (var i = 0; i < colors.length; i++) {
 		var ntcColor = ntc.name("#" + colors[i]);
+		var col = document.createElement("div");
 		var blockSpan = document.createElement("div");
+
+		col.classList.add("col");
 		blockSpan.classList.add("named-color-block");
 		blockSpan.style.backgroundColor = "#" + colors[i];
 		var nameDiv = document.createElement("div");
@@ -144,7 +147,8 @@ function buildColorListBar(colors) {
 		hexDiv.innerHTML = "#" + colors[i];
 		blockSpan.appendChild(nameDiv);
 		blockSpan.appendChild(hexDiv);
-		colorsList.appendChild(blockSpan);
+		col.appendChild(blockSpan)
+		colorsList.appendChild(col);
 	}
 }
 
