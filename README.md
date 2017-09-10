@@ -6,8 +6,8 @@ Generate a color palette based on a chosen color.  Provides semantic named color
 1. ~~export to stylesheets~~
 2. page to just open in new window with plain text printed (no file download)
 3. better display of main color that is selected
-4. include selected color in palette
-5. add color-scheme-js variations as option
+4. ~~include selected color in palette~~
+5. ~~add color-scheme-js variations as option~~
 6. mobile
 7. refactor as npm package (e.g. var pallypal = new PallyPal())
 8. credits within code
