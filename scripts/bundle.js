@@ -243,15 +243,13 @@ function buildDataforAjax(e) {
 		post.colors.push(color);
 	}
 
-	post.colors.unshift({
+	// adding current color to array
+	post.colors.push({
 		name: ntc.name("#" + currentColorHex)[1],
-		code: currentColorHex
-
+		code: currentColorHex,
+		is_current: true
 	});
-
-	console.log(post);
-
-
+	
 	postToGetFile(post);
 }
 

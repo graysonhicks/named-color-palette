@@ -8306,6 +8306,13 @@ body {
   position: absolute;
   bottom: 10px;
   width: 100%; }
+  .rgb-fields #current-color-title {
+    font-weight: bold;
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    border-right: 1px solid white;
+    padding-right: 5px; }
   .rgb-fields .field-group {
     display: flex;
     align-items: center;
