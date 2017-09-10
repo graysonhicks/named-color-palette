@@ -28,6 +28,7 @@ var green = document.getElementById("green");
 var hex = document.getElementById("hex");
 var name = document.getElementById("name");
 var schemeMode = document.getElementById("scheme-mode");
+var variationMode = document.getElementById("variation-mode");
 var exportButton = document.getElementById("export-button");
 var exportButtons = document.querySelectorAll(".export-buttons");
 
@@ -93,6 +94,7 @@ function colorToPos(color) {
 	setCurrentColor(color);
 	createShadeSpectrum(colorToHue(color));
 	enableSchemePicker();
+	enableVariationPicker();
 	enableExport();
 }
 
@@ -115,7 +117,7 @@ function setColorValues(color) {
 	scheme
 		.from_hue(hueValue)
 		.scheme(schemeMode.value)
-		.variation("default"); // Use the 'soft' color variation
+		.variation(variationMode.value); // Use the 'soft' color variation
 
 	var colors = scheme.colors();
 	buildColorListBar(colors);
@@ -206,6 +208,7 @@ function getSpectrumColor(e) {
 	setColorValues(color);
 	updateSpectrumCursor(x, y);
 	enableSchemePicker();
+	enableVariationPicker();
 	enableExport();
 }
 
@@ -216,6 +219,10 @@ function endGetSpectrumColor(e) {
 
 function enableSchemePicker() {
 	schemeMode.disabled = false;
+}
+
+function enableVariationPicker() {
+	variationMode.disabled = false;
 }
 
 function enableExport() {
@@ -267,6 +274,11 @@ hex.addEventListener("change", function() {
 });
 
 schemeMode.addEventListener("change", function() {
+	var color = tinycolor(currentColor);
+	colorToPos(color);
+});
+
+variationMode.addEventListener("change", function() {
 	var color = tinycolor(currentColor);
 	colorToPos(color);
 });
