@@ -237,14 +237,14 @@ var startGetSpectrumColor = function(e) {
 	window.addEventListener("mousemove", getSpectrumColor);
 	window.addEventListener("mouseup", endGetSpectrumColor);
 
-	window.addEventListener("touchmove", getSpectrumColor);
-	window.addEventListener("touchend", endGetSpectrumColor);
+	spectrumCanvas.addEventListener("touchmove", getSpectrumColor);
+	spectrumCanvas.addEventListener("touchend", endGetSpectrumColor);
 };
 
 function endGetSpectrumColor(e) {
 	spectrumCursor.classList.remove("dragging");
 	window.removeEventListener("mousemove", getSpectrumColor);
-	window.removeEventListener("touchmove", getSpectrumColor);
+	spectrumCanvas.removeEventListener("touchmove", getSpectrumColor);
 }
 
 function enableSchemePicker() {
