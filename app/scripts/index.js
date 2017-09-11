@@ -234,8 +234,8 @@ function getSpectrumColor(e) {
 var startGetSpectrumColor = function(e) {
 	getSpectrumColor(e);
 	spectrumCursor.classList.add("dragging");
-	window.addEventListener("mousemove", getSpectrumColor);
-	window.addEventListener("mouseup", endGetSpectrumColor);
+	spectrumCanvas.addEventListener("mousemove", getSpectrumColor);
+	spectrumCanvas.addEventListener("mouseup", endGetSpectrumColor);
 
 	spectrumCanvas.addEventListener("touchmove", getSpectrumColor);
 	spectrumCanvas.addEventListener("touchend", endGetSpectrumColor);
@@ -243,7 +243,7 @@ var startGetSpectrumColor = function(e) {
 
 function endGetSpectrumColor(e) {
 	spectrumCursor.classList.remove("dragging");
-	window.removeEventListener("mousemove", getSpectrumColor);
+	spectrumCanvas.removeEventListener("mousemove", getSpectrumColor);
 	spectrumCanvas.removeEventListener("touchmove", getSpectrumColor);
 }
 
