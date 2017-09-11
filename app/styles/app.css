@@ -8329,6 +8329,8 @@ body {
   height: 20vh;
   padding: 5px;
   background-color: #364347; }
+  #colors-list h1 {
+    font-weight: bold; }
   #colors-list h1,
   #colors-list h5 {
     color: white; }

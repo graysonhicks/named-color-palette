@@ -137,6 +137,7 @@ function setColorValues(color) {
 
 function buildColorListBar(colors) {
 	var colorsList = document.getElementById("colors-list");
+	colorsList.classList.remove("justify-content-center", "align-items-center")
 	// empty colors list of previous colors
 	while (colorsList.firstChild) colorsList.removeChild(colorsList.firstChild);
 	for (var i = 0; i < colors.length; i++) {

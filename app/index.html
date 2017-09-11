@@ -26,15 +26,16 @@
   <meta property="twitter:image:src" content="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Paint_Texture.jpg/631px-Paint_Texture.jpg">
 
   <title>PallyPal</title>
-  <link href="https://fonts.googleapis.com/css?family=Muli:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,700,Walter+Turncoat" rel="stylesheet">
   <link rel="stylesheet" href="styles/app.css">
 </head>
 
 <body>
   <div id="xs-media-query-test" class="d-block d-md-none d-lg-none d-xl-none"></div>
-  <div id="colors-list" class="row no-gutters">
+  <div id="colors-list" class="row no-gutters justify-content-center align-items-center">
     <div class="col-md-4 text-center">
-      <h1 class="main-headings">PallyPal</h1></div>
+      <h1 class="main-headings">PALLYPAL</h1>
+    </div>
     <div class="col-md-8 text-center">
       <h5 class="main-headings">Click to generate a palette with semantically named color variables. Use the inputs below to start with a known color or change the scheme. Export to style of your choice! Enjoy!</h5></div>
   </div>
@@ -85,7 +86,7 @@
     </div>
 
     <div class="col-2 col-lg-auto user-input-columns user-input-label-containers">
-      <label for="" class="user-input-labels">R:</label>
+      <label for="red" class="user-input-labels">R:</label>
     </div>
     <div class="col-2 col-lg-auto user-input-columns">
       <input type="number" max="255" min="0" id="red" class="user-input-fields form-control" />
@@ -93,19 +94,19 @@
 
 
     <div class="col-2 col-lg-auto user-input-columns user-input-label-containers">
-      <label for="" class="user-input-labels">G:</label>
+      <label for="green" class="user-input-labels">G:</label>
     </div>
     <div class="col-2 col-lg-auto user-input-columns">
       <input type="number" max="255" min="0" id="green" class="user-input-fields form-control" />
     </div>
     <div class="col-2 col-lg-auto user-input-columns user-input-label-containers">
-      <label for="" class="user-input-labels">B:</label>
+      <label for="blue" class="user-input-labels">B:</label>
     </div>
     <div class="col-2 col-lg-auto user-input-columns">
       <input type="number" max="255" min="0" id="blue" class="user-input-fields form-control" />
     </div>
-    <div class="col col-md-3 col-lg-2 col-xl-auto user-input-columns user-input-label-containers">
-      <label for="" class="user-input-labels">Scheme:</label>
+    <div class="col col-md-3 col-lg-3 col-xl-auto user-input-columns user-input-label-containers">
+      <label for="scheme-mode" class="user-input-labels">Scheme:</label>
     </div>
     <div class="col col-md-3 col-lg-3 col-xl-auto user-input-columns"><select id="scheme-mode" class="user-input-fields form-control" disabled>
           <option id="mono-scheme-option" value="mono">Mono</option>
@@ -117,7 +118,7 @@
 
 
     <div class="col col-md-3 col-lg-2 col-xl-auto user-input-columns user-input-label-containers">
-      <label for="" class="user-input-labels">Variation:</label>
+      <label for="variation-mode" class="user-input-labels">Variation:</label>
     </div>
     <div class="col col-md-3 col-lg-3 col-xl-auto user-input-columns"> <select id="variation-mode" class="user-input-fields form-control" disabled>
           <option value="default">None</option>
