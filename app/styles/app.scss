@@ -37,6 +37,7 @@ body {
 	height: 20vh;
 	padding: 5px;
 	background-color: $color-ui-border;
+
 	h1,
 	h5 {
 		color: white;
@@ -66,7 +67,7 @@ body {
 #export-button-group {
 	z-index: 999;
 	position: absolute;
-	right: 0px;
+	right: 0;
 
 	#export-button {
 		cursor: pointer;
@@ -207,14 +208,14 @@ body {
 		line-height: $input-height;
 	}
 
+	.user-input-fields,
 	.user-input-label-containers,
-	.user-input-labels,
-	.user-input-fields {
+	.user-input-labels {
 		height: $input-height;
 	}
 
 	.user-input-fields {
-		padding: .2rem .2rem;
+		padding: 0.2rem;
 		text-align: center;
 	}
 
@@ -225,7 +226,6 @@ body {
 	}
 }
 
-
 input::-webkit-inner-spin-button,
 input::-webkit-outer-spin-button {
 	/* display: none; <- Crashes Chrome on hover */
@@ -233,14 +233,25 @@ input::-webkit-outer-spin-button {
 	margin: 0;
 	/* <-- Apparently some margin are still there even though it's hidden */
 }
-
-
 /* Medium devices (desktops, 992px and below) */
-@include media-breakpoint-down(md){
+@include media-breakpoint-down(md) {
+
+	#colors-list {
+		height: 30vh;
+
+		.named-color-block {
+			font-size: .75rem;
+		}
+	}
+
+	.spectrum-map {
+		height: 70vh;
+	}
 	#user-inputs-container {
 		position: relative;
 		background-color: $color-ui-panel;
 		padding-right: 10px;
+		padding-bottom: 10px;
 
 		.user-input-columns {
 			margin-bottom: 10px;
@@ -249,8 +260,14 @@ input::-webkit-outer-spin-button {
 		.user-input-label-containers {
 			margin-left: 0;
 			margin-right: 0;
+			text-align: left;
+			padding-left: 10px;
 		}
 	}
 
-
+	#analogic-scheme-option,
+	#tetrade-scheme-option,
+	#triade-scheme-option {
+		display: none;
+	}
 }

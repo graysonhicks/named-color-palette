@@ -8353,7 +8353,7 @@ body {
 #export-button-group {
   z-index: 999;
   position: absolute;
-  right: 0px; }
+  right: 0; }
   #export-button-group #export-button {
     cursor: pointer;
     background-color: #00a18c;
@@ -8463,12 +8463,12 @@ body {
     text-align: center; }
   #user-inputs-container .user-input-labels {
     line-height: 40px; }
+  #user-inputs-container .user-input-fields,
   #user-inputs-container .user-input-label-containers,
-  #user-inputs-container .user-input-labels,
-  #user-inputs-container .user-input-fields {
+  #user-inputs-container .user-input-labels {
     height: 40px; }
   #user-inputs-container .user-input-fields {
-    padding: .2rem .2rem;
+    padding: 0.2rem;
     text-align: center; }
   #user-inputs-container #name {
     color: white;
@@ -8484,14 +8484,30 @@ input::-webkit-outer-spin-button {
 
 /* Medium devices (desktops, 992px and below) */
 @media (max-width: 991px) {
+  #colors-list {
+    height: 30vh; }
+    #colors-list .named-color-block {
+      font-size: .75rem; }
+
+  .spectrum-map {
+    height: 70vh; }
+
   #user-inputs-container {
     position: relative;
     background-color: #1f232a;
-    padding-right: 10px; }
+    padding-right: 10px;
+    padding-bottom: 10px; }
     #user-inputs-container .user-input-columns {
       margin-bottom: 10px; }
     #user-inputs-container .user-input-label-containers {
       margin-left: 0;
-      margin-right: 0; } }
+      margin-right: 0;
+      text-align: left;
+      padding-left: 10px; }
+
+  #analogic-scheme-option,
+  #tetrade-scheme-option,
+  #triade-scheme-option {
+    display: none; } }
 
 /*# sourceMappingURL=app.css.map */
