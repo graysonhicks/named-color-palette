@@ -26,15 +26,16 @@
   <meta property="twitter:image:src" content="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Paint_Texture.jpg/631px-Paint_Texture.jpg">
 
   <title>PallyPal</title>
-  <link href="https://fonts.googleapis.com/css?family=Muli:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,700|Permanent+Marker" rel="stylesheet">
   <link rel="stylesheet" href="styles/app.css">
 </head>
 
 <body>
-
-  <div id="colors-list" class="row no-gutters">
+  <div id="xs-media-query-test" class="d-block d-md-none d-lg-none d-xl-none"></div>
+  <div id="colors-list" class="row no-gutters justify-content-center align-items-center">
     <div class="col-md-4 text-center">
-      <h1 class="main-headings">PallyPal</h1></div>
+      <h1 class="main-headings">PALLYPAL</h1>
+    </div>
     <div class="col-md-8 text-center">
       <h5 class="main-headings">Click to generate a palette with semantically named color variables. Use the inputs below to start with a known color or change the scheme. Export to style of your choice! Enjoy!</h5></div>
   </div>
@@ -63,64 +64,63 @@
   </div>
   <div class="row active no-gutters justify-content-center align-items-center" id="user-inputs-container">
 
-    <div class="col-12 col-md-auto user-input-columns user-input-label-containers">
+    <div class="col-12 col-lg-auto user-input-columns user-input-label-containers">
       <span id="current-color-title" class="user-input-labels">Current Color</span>
     </div>
 
-    <div class="col-4 col-md-auto user-input-columns user-input-label-containers">
+    <div class="col-4 col-lg-auto user-input-columns user-input-label-containers">
       <label for="name" class="user-input-labels">Name:</label>
     </div>
-    <div class="col-8 col-md-auto user-input-columns">
+    <div class="col-8 col-lg-auto user-input-columns">
       <input type="text" id="name" class="user-input-fields form-control" />
 
     </div>
 
-    <div class="col-4 col-md-auto user-input-columns user-input-label-containers">
+    <div class="col-4 col-lg-auto user-input-columns user-input-label-containers">
       <label for="hex" class="user-input-labels">Hex:</label>
     </div>
 
-    <div class="col-8 col-md-auto user-input-columns">
+    <div class="col-8 col-lg-auto user-input-columns">
       <input type="text" id="hex" class="user-input-fields form-control" />
 
     </div>
 
-    <div class="col-2 col-md-auto user-input-columns user-input-label-containers">
-      <label for="" class="user-input-labels">R:</label>
+    <div class="col-2 col-lg-auto user-input-columns user-input-label-containers">
+      <label for="red" class="user-input-labels">R:</label>
     </div>
-    <div class="col-2 col-md-auto user-input-columns">
+    <div class="col-2 col-lg-auto user-input-columns">
       <input type="number" max="255" min="0" id="red" class="user-input-fields form-control" />
     </div>
 
 
-    <div class="col-2 col-md-auto user-input-columns user-input-label-containers">
-      <label for="" class="user-input-labels">G:</label>
+    <div class="col-2 col-lg-auto user-input-columns user-input-label-containers">
+      <label for="green" class="user-input-labels">G:</label>
     </div>
-    <div class="col-2 col-md-auto user-input-columns">
+    <div class="col-2 col-lg-auto user-input-columns">
       <input type="number" max="255" min="0" id="green" class="user-input-fields form-control" />
     </div>
-    <div class="col-2 col-md-auto user-input-columns user-input-label-containers">
-      <label for="" class="user-input-labels">B:</label>
+    <div class="col-2 col-lg-auto user-input-columns user-input-label-containers">
+      <label for="blue" class="user-input-labels">B:</label>
     </div>
-    <div class="col-2 col-md-auto user-input-columns">
+    <div class="col-2 col-lg-auto user-input-columns">
       <input type="number" max="255" min="0" id="blue" class="user-input-fields form-control" />
     </div>
-
-    <div class="col user-input-label-containers">
-      <label for="" class="user-input-labels">Scheme:</label>
+    <div class="col col-md-3 col-lg-3 col-xl-auto user-input-columns user-input-label-containers">
+      <label for="scheme-mode" class="user-input-labels">Scheme:</label>
     </div>
-    <div class="col"><select id="scheme-mode" class="user-input-fields form-control" disabled>
-          <option value="mono">Mono</option>
-          <option value="triade">Triade</option>
-          <option value="contrast">Contrast</option>
-          <option value="tetrade">Tetrade</option>
-          <option value="analogic">Analogic</option>
+    <div class="col col-md-3 col-lg-3 col-xl-auto user-input-columns"><select id="scheme-mode" class="user-input-fields form-control" disabled>
+          <option id="mono-scheme-option" value="mono">Mono</option>
+          <option id="triade-scheme-option" value="triade">Triade</option>
+          <option id="contrast-scheme-option" value="contrast">Contrast</option>
+          <option id="tetrade-scheme-option" value="tetrade">Tetrade</option>
+          <option id="analogic-scheme-option" value="analogic">Analogic</option>
         </select></div>
 
 
-    <div class="col user-input-label-containers">
-      <label for="" class="user-input-labels">Variation:</label>
+    <div class="col col-md-3 col-lg-2 col-xl-auto user-input-columns user-input-label-containers">
+      <label for="variation-mode" class="user-input-labels">Variation:</label>
     </div>
-    <div class="col"> <select id="variation-mode" class="user-input-fields form-control" disabled>
+    <div class="col col-md-3 col-lg-3 col-xl-auto user-input-columns"> <select id="variation-mode" class="user-input-fields form-control" disabled>
           <option value="default">None</option>
           <option value="pastel">Pastel</option>
           <option value="soft">Soft</option>

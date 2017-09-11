@@ -37,6 +37,11 @@ body {
 	height: 20vh;
 	padding: 5px;
 	background-color: $color-ui-border;
+
+	h1 {
+		font-family: "Permanent Marker";
+	}
+
 	h1,
 	h5 {
 		color: white;
@@ -66,7 +71,7 @@ body {
 #export-button-group {
 	z-index: 999;
 	position: absolute;
-	right: 0px;
+	right: 0;
 
 	#export-button {
 		cursor: pointer;
@@ -153,7 +158,7 @@ body {
 .spectrum-map {
 	position: relative;
 	width: 100%;
-	height: 80vh;
+	height: 70vh;
 }
 
 #spectrum-canvas {
@@ -193,7 +198,8 @@ body {
 }
 
 #user-inputs-container {
-	position: absolute;
+	position: relative;
+	height: 10vh;
 	bottom: 0;
 	width: 100%;
 
@@ -207,14 +213,14 @@ body {
 		line-height: $input-height;
 	}
 
+	.user-input-fields,
 	.user-input-label-containers,
-	.user-input-labels,
-	.user-input-fields {
+	.user-input-labels {
 		height: $input-height;
 	}
 
 	.user-input-fields {
-		padding: .2rem .2rem;
+		padding: 0.2rem;
 		text-align: center;
 	}
 
@@ -225,7 +231,6 @@ body {
 	}
 }
 
-
 input::-webkit-inner-spin-button,
 input::-webkit-outer-spin-button {
 	/* display: none; <- Crashes Chrome on hover */
@@ -233,24 +238,37 @@ input::-webkit-outer-spin-button {
 	margin: 0;
 	/* <-- Apparently some margin are still there even though it's hidden */
 }
+@include media-breakpoint-down(lg) {
+	.user-input-columns {
+		margin-bottom: 10px;
+	}
+}
 
+@include media-breakpoint-down(md) {
+#user-inputs-container {
+	position: relative;
+	background-color: $color-ui-panel;
+	padding-right: 10px;
+	padding-bottom: 10px;
 
-/* Medium devices (desktops, 992px and below) */
-@include media-breakpoint-down(md){
-	#user-inputs-container {
-		position: relative;
-		background-color: $color-ui-panel;
-		padding-right: 10px;
-
-		.user-input-columns {
-			margin-bottom: 10px;
-		}
-
-		.user-input-label-containers {
-			margin-left: 0;
-			margin-right: 0;
-		}
+	.user-input-columns {
+		margin-bottom: 10px;
 	}
 
+	.user-input-label-containers {
+		margin-left: 0;
+		margin-right: 0;
+		text-align: left;
+		padding-left: 10px;
+	}
+}
+}
 
+@include media-breakpoint-down(sm) {
+
+	#analogic-scheme-option,
+	#tetrade-scheme-option,
+	#triade-scheme-option {
+		display: none;
+	}
 }

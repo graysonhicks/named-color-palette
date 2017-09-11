@@ -8329,6 +8329,8 @@ body {
   height: 20vh;
   padding: 5px;
   background-color: #364347; }
+  #colors-list h1 {
+    font-family: "Permanent Marker"; }
   #colors-list h1,
   #colors-list h5 {
     color: white; }
@@ -8353,7 +8355,7 @@ body {
 #export-button-group {
   z-index: 999;
   position: absolute;
-  right: 0px; }
+  right: 0; }
   #export-button-group #export-button {
     cursor: pointer;
     background-color: #00a18c;
@@ -8421,7 +8423,7 @@ body {
 .spectrum-map {
   position: relative;
   width: 100%;
-  height: 80vh; }
+  height: 70vh; }
 
 #spectrum-canvas {
   position: absolute;
@@ -8454,7 +8456,8 @@ body {
     display: block; }
 
 #user-inputs-container {
-  position: absolute;
+  position: relative;
+  height: 10vh;
   bottom: 0;
   width: 100%; }
   #user-inputs-container .user-input-label-containers {
@@ -8463,12 +8466,12 @@ body {
     text-align: center; }
   #user-inputs-container .user-input-labels {
     line-height: 40px; }
+  #user-inputs-container .user-input-fields,
   #user-inputs-container .user-input-label-containers,
-  #user-inputs-container .user-input-labels,
-  #user-inputs-container .user-input-fields {
+  #user-inputs-container .user-input-labels {
     height: 40px; }
   #user-inputs-container .user-input-fields {
-    padding: .2rem .2rem;
+    padding: 0.2rem;
     text-align: center; }
   #user-inputs-container #name {
     color: white;
@@ -8482,16 +8485,26 @@ input::-webkit-outer-spin-button {
   margin: 0;
   /* <-- Apparently some margin are still there even though it's hidden */ }
 
-/* Medium devices (desktops, 992px and below) */
+@media (max-width: 1199px) {
+  .user-input-columns {
+    margin-bottom: 10px; } }
 @media (max-width: 991px) {
   #user-inputs-container {
     position: relative;
     background-color: #1f232a;
-    padding-right: 10px; }
+    padding-right: 10px;
+    padding-bottom: 10px; }
     #user-inputs-container .user-input-columns {
       margin-bottom: 10px; }
     #user-inputs-container .user-input-label-containers {
       margin-left: 0;
-      margin-right: 0; } }
+      margin-right: 0;
+      text-align: left;
+      padding-left: 10px; } }
+@media (max-width: 767px) {
+  #analogic-scheme-option,
+  #tetrade-scheme-option,
+  #triade-scheme-option {
+    display: none; } }
 
 /*# sourceMappingURL=app.css.map */
