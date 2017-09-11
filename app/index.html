@@ -32,88 +32,106 @@
 
 <body>
 
-    <div id="colors-list" class="row no-gutters">
-      <div class="col">
-        <h1>PallyPal</h1></div>
-      <div class="col">
-        <h5>Click to generate a palette with semantically named color variables. Use the inputs below to start with a known color or change the scheme. Export to style of your choice! Enjoy!</h5></div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="btn-group" id="export-button-group">
-          <button type="button" id="export-button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
-                Export <span class="caret"></span>
-              </button>
-          <ul class="dropdown-menu">
-            <li><a href="#" class="export-buttons" data-type="css">as CSS</a></li>
-            <li><a href="#" class="export-buttons" data-type="scss">as SCSS</a></li>
-            <li><a href="#" class="export-buttons" data-type="sass">as SASS</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-<div class="row">
-  <div class="col">
-        <div class="spectrum-map">
-          <button id="spectrum-cursor" class="color-cursor"></button>
-          <canvas id="spectrum-canvas"></canvas>
-        </div>
-
+  <div id="colors-list" class="row no-gutters">
+    <div class="col-md-4 text-center">
+      <h1 class="main-headings">PallyPal</h1></div>
+    <div class="col-md-8 text-center">
+      <h5 class="main-headings">Click to generate a palette with semantically named color variables. Use the inputs below to start with a known color or change the scheme. Export to style of your choice! Enjoy!</h5></div>
   </div>
-</div>
-<div class="row active no-gutters" id="user-inputs-container">
-<div class="current-color-title-container col">
-  <div id="current-color-title" class="field-label">Current Color</div>
-</div>
-<div id="name-field" class="col">
-  <label for="" class="">Name:</label>
-  <input type="text" id="name" class="" />
-</div>
-<div class="rgb-inputs-container col">
   <div class="row no-gutters">
     <div class="col">
-        <label for="" class="">R:</label>
-        <input type="number" max="255" min="0" id="red" class="" />
-    </div>
-    <div class="col">
-      <label for="" class="">G:</label>
-      <input type="number" max="255" min="0" id="green" class="" />
-
-    </div>
-    <div class="col">
-      <label for="" class="">B:</label>
-      <input type="number" max="255" min="0" id="blue" class="" />
+      <div class="btn-group" id="export-button-group">
+        <button type="button" id="export-button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled>
+                Export <span class="caret"></span>
+              </button>
+        <ul class="dropdown-menu">
+          <li><a href="#" class="export-buttons" data-type="css">as CSS</a></li>
+          <li><a href="#" class="export-buttons" data-type="scss">as SCSS</a></li>
+          <li><a href="#" class="export-buttons" data-type="sass">as SASS</a></li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
+  <div class="row no-gutters">
+    <div class="col">
+      <div class="spectrum-map">
+        <button id="spectrum-cursor" class="color-cursor"></button>
+        <canvas id="spectrum-canvas"></canvas>
+      </div>
 
-<div id="hex-field" class="col">
-  <label for="" class="field-label">Hex:</label>
-  <input type="text" id="hex" class="" />
-</div>
+    </div>
+  </div>
+  <div class="row active no-gutters justify-content-center align-items-center" id="user-inputs-container">
 
-<div id="scheme-mode-field" class="col">
-  <label for="" class="field-label">Scheme:</label>
-  <select id="scheme-mode" class="" disabled>
-            <option value="mono">Mono</option>
-            <option value="triade">Triade</option>
-            <option value="contrast">Contrast</option>
-            <option value="tetrade">Tetrade</option>
-            <option value="analogic">Analogic</option>
-          </select>
-</div>
-<div id="variation-mode-field" class="col">
-  <label for="" class="field-label">Variation:</label>
-  <select id="variation-mode" class="" disabled>
-            <option value="default">None</option>
-            <option value="pastel">Pastel</option>
-            <option value="soft">Soft</option>
-            <option value="light">Light</option>
-            <option value="hard">Hard</option>
-            <option value="pale">Pale</option>
-          </select>
-</div>
-</div>
+    <div class="col-12 col-md-auto user-input-columns user-input-label-containers">
+      <span id="current-color-title" class="user-input-labels">Current Color</span>
+    </div>
+
+    <div class="col-4 col-md-auto user-input-columns user-input-label-containers">
+      <label for="name" class="user-input-labels">Name:</label>
+    </div>
+    <div class="col-8 col-md-auto user-input-columns">
+      <input type="text" id="name" class="user-input-fields form-control" />
+
+    </div>
+
+    <div class="col-4 col-md-auto user-input-columns user-input-label-containers">
+      <label for="hex" class="user-input-labels">Hex:</label>
+    </div>
+
+    <div class="col-8 col-md-auto user-input-columns">
+      <input type="text" id="hex" class="user-input-fields form-control" />
+
+    </div>
+
+    <div class="col-2 col-md-auto user-input-columns user-input-label-containers">
+      <label for="" class="user-input-labels">R:</label>
+    </div>
+    <div class="col-2 col-md-auto user-input-columns">
+      <input type="number" max="255" min="0" id="red" class="user-input-fields form-control" />
+    </div>
+
+
+    <div class="col-2 col-md-auto user-input-columns user-input-label-containers">
+      <label for="" class="user-input-labels">G:</label>
+    </div>
+    <div class="col-2 col-md-auto user-input-columns">
+      <input type="number" max="255" min="0" id="green" class="user-input-fields form-control" />
+    </div>
+    <div class="col-2 col-md-auto user-input-columns user-input-label-containers">
+      <label for="" class="user-input-labels">B:</label>
+    </div>
+    <div class="col-2 col-md-auto user-input-columns">
+      <input type="number" max="255" min="0" id="blue" class="user-input-fields form-control" />
+    </div>
+
+    <div class="col user-input-label-containers">
+      <label for="" class="user-input-labels">Scheme:</label>
+    </div>
+    <div class="col"><select id="scheme-mode" class="user-input-fields form-control" disabled>
+          <option value="mono">Mono</option>
+          <option value="triade">Triade</option>
+          <option value="contrast">Contrast</option>
+          <option value="tetrade">Tetrade</option>
+          <option value="analogic">Analogic</option>
+        </select></div>
+
+
+    <div class="col user-input-label-containers">
+      <label for="" class="user-input-labels">Variation:</label>
+    </div>
+    <div class="col"> <select id="variation-mode" class="user-input-fields form-control" disabled>
+          <option value="default">None</option>
+          <option value="pastel">Pastel</option>
+          <option value="soft">Soft</option>
+          <option value="light">Light</option>
+          <option value="hard">Hard</option>
+          <option value="pale">Pale</option>
+        </select></div>
+
+
+  </div>
+
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>

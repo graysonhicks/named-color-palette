@@ -8353,7 +8353,7 @@ body {
 #export-button-group {
   z-index: 999;
   position: absolute;
-  right: 15px; }
+  right: 0px; }
   #export-button-group #export-button {
     cursor: pointer;
     background-color: #00a18c;
@@ -8457,6 +8457,23 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%; }
+  #user-inputs-container .user-input-label-containers {
+    margin-right: 10px;
+    margin-left: 10px;
+    text-align: center; }
+  #user-inputs-container .user-input-labels {
+    line-height: 40px; }
+  #user-inputs-container .user-input-label-containers,
+  #user-inputs-container .user-input-labels,
+  #user-inputs-container .user-input-fields {
+    height: 40px; }
+  #user-inputs-container .user-input-fields {
+    padding: .2rem .2rem;
+    text-align: center; }
+  #user-inputs-container #name {
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase; }
 
 input::-webkit-inner-spin-button,
 input::-webkit-outer-spin-button {
@@ -8466,5 +8483,15 @@ input::-webkit-outer-spin-button {
   /* <-- Apparently some margin are still there even though it's hidden */ }
 
 /* Medium devices (desktops, 992px and below) */
+@media (max-width: 991px) {
+  #user-inputs-container {
+    position: relative;
+    background-color: #1f232a;
+    padding-right: 10px; }
+    #user-inputs-container .user-input-columns {
+      margin-bottom: 10px; }
+    #user-inputs-container .user-input-label-containers {
+      margin-left: 0;
+      margin-right: 0; } }
 
 /*# sourceMappingURL=app.css.map */

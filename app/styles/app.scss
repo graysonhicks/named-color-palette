@@ -66,7 +66,7 @@ body {
 #export-button-group {
 	z-index: 999;
 	position: absolute;
-	right: 15px;
+	right: 0px;
 
 	#export-button {
 		cursor: pointer;
@@ -196,6 +196,33 @@ body {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
+
+	.user-input-label-containers {
+		margin-right: 10px;
+		margin-left: 10px;
+		text-align: center;
+	}
+
+	.user-input-labels {
+		line-height: $input-height;
+	}
+
+	.user-input-label-containers,
+	.user-input-labels,
+	.user-input-fields {
+		height: $input-height;
+	}
+
+	.user-input-fields {
+		padding: .2rem .2rem;
+		text-align: center;
+	}
+
+	#name {
+		color: white;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
 }
 
 
@@ -210,5 +237,20 @@ input::-webkit-outer-spin-button {
 
 /* Medium devices (desktops, 992px and below) */
 @include media-breakpoint-down(md){
+	#user-inputs-container {
+		position: relative;
+		background-color: $color-ui-panel;
+		padding-right: 10px;
+
+		.user-input-columns {
+			margin-bottom: 10px;
+		}
+
+		.user-input-label-containers {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+
 
 }

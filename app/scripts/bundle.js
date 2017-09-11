@@ -8,6 +8,7 @@ var tinycolor = require("tinycolor2");
 //https://github.com/bgrins/TinyColor
 var ntc = require("ntc");
 var ColorScheme = require("color-scheme");
+var fontColorContrast = require('font-color-contrast');
 
 var spectrumCanvas = document.getElementById("spectrum-canvas");
 var spectrumCtx = spectrumCanvas.getContext("2d");
@@ -114,7 +115,15 @@ function setColorValues(color) {
 	green.value = rgbValues.g;
 	blue.value = rgbValues.b;
 	hex.value = "#" + hexValue;
+
+	var fontColorBasedOnBackground = fontColorContrast("#" + hexValue);
+
+	if(fontColorBasedOnBackground == "#000000"){
+		fontColorBasedOnBackground = "#364347";
+	}
+
 	name.value = ntc.name("#" + hexValue)[1];
+	name.style.color = fontColorBasedOnBackground;
 
 
 	var scheme = new ColorScheme();
@@ -135,15 +144,22 @@ function buildColorListBar(colors) {
 		var ntcColor = ntc.name("#" + colors[i]);
 		var col = document.createElement("div");
 		var blockSpan = document.createElement("div");
+		var fontColorBasedOnBackground = fontColorContrast("#" + colors[i]);
+
+		if(fontColorBasedOnBackground == "#000000"){
+			fontColorBasedOnBackground = "#364347";
+		}
 
 		col.classList.add("col");
 		blockSpan.classList.add("named-color-block");
 		blockSpan.style.backgroundColor = "#" + colors[i];
 		var nameDiv = document.createElement("div");
 		nameDiv.innerHTML = ntcColor[1];
+		nameDiv.style.color = fontColorBasedOnBackground;
 		blockSpan.setAttribute("data-code", colors[i]);
 		blockSpan.setAttribute("data-name", ntcColor[1]);
 		var hexDiv = document.createElement("div");
+		hexDiv.style.color = fontColorBasedOnBackground;
 		hexDiv.classList.add("hex-span");
 		hexDiv.innerHTML = "#" + colors[i];
 		blockSpan.appendChild(nameDiv);
@@ -319,7 +335,7 @@ window.addEventListener("resize", function() {
 
 new ColorPicker();
 
-},{"bootstrap":2,"color-scheme":3,"jquery":4,"ntc":5,"tinycolor2":6,"underscore":7}],2:[function(require,module,exports){
+},{"bootstrap":2,"color-scheme":3,"font-color-contrast":4,"jquery":5,"ntc":6,"tinycolor2":7,"underscore":8}],2:[function(require,module,exports){
 /*!
  * Bootstrap v4.0.0-beta (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
@@ -4832,6 +4848,58 @@ var Popover = function ($) {
 
 
 },{}],4:[function(require,module,exports){
+var fontColorContrast = function(hexColorOrRedOrArray, green, blue) {
+  // Check if the color is hexadecimal (with hash)
+  var hash = /#/;
+  var isHex = hash.test(hexColorOrRedOrArray);
+  var isRGB = green !== undefined && blue !== undefined ? true : false;
+  var isArray = Array.isArray(hexColorOrRedOrArray);
+
+  //Default is a bright color
+  var fontColor = '#ffffff';
+  var red = 0;
+
+  if (isHex) {
+    red = hexToDec(hexColorOrRedOrArray.substr(1, 2));
+    green = hexToDec(hexColorOrRedOrArray.substr(3, 2));
+    blue = hexToDec(hexColorOrRedOrArray.substr(5, 2));
+
+  } else if (isRGB) {
+    red = parseInt(hexColorOrRedOrArray);
+    green = parseInt(green);
+    blue = parseInt(blue);
+
+  } else if (isArray) {
+    red = parseInt(hexColorOrRedOrArray[0]);
+    green = parseInt(hexColorOrRedOrArray[1]);
+    blue = parseInt(hexColorOrRedOrArray[2]);
+
+  } else {
+    // Not a color, respond with white color
+    return fontColor;
+  }
+
+  var contrast = Math.sqrt(
+    red * red * .241 +
+    green * green * .691 +
+    blue * blue * .068
+  );
+
+  if (contrast > 130) {
+    fontColor = '#000000';
+  }
+
+  return fontColor;
+};
+
+module.exports = fontColorContrast;
+
+var hexToDec = function(hexString) {
+  var decString = (hexString).replace(/[^a-f0-9]/gi, '')
+  return parseInt(decString, 16)
+}
+
+},{}],5:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.4
  * http://jquery.com/
@@ -14647,7 +14715,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /*
 
 +-----------------------------------------------------------------+
@@ -16343,7 +16411,7 @@ var ntc = {
 ntc.init();
 
 module.exports = ntc;
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 // TinyColor v1.4.1
 // https://github.com/bgrins/TinyColor
 // Brian Grinstead, MIT License
@@ -17540,7 +17608,7 @@ else {
 
 })(Math);
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors

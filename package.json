@@ -40,5 +40,7 @@
     "jQuery": "$",
     "underscore": "_"
   },
-  "dependencies": {}
+  "dependencies": {
+    "font-color-contrast": "^1.0.3"
+  }
 }

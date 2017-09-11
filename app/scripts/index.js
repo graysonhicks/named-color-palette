@@ -7,6 +7,7 @@ var tinycolor = require("tinycolor2");
 //https://github.com/bgrins/TinyColor
 var ntc = require("ntc");
 var ColorScheme = require("color-scheme");
+var fontColorContrast = require('font-color-contrast');
 
 var spectrumCanvas = document.getElementById("spectrum-canvas");
 var spectrumCtx = spectrumCanvas.getContext("2d");
@@ -113,7 +114,15 @@ function setColorValues(color) {
 	green.value = rgbValues.g;
 	blue.value = rgbValues.b;
 	hex.value = "#" + hexValue;
+
+	var fontColorBasedOnBackground = fontColorContrast("#" + hexValue);
+
+	if(fontColorBasedOnBackground == "#000000"){
+		fontColorBasedOnBackground = "#364347";
+	}
+
 	name.value = ntc.name("#" + hexValue)[1];
+	name.style.color = fontColorBasedOnBackground;
 
 
 	var scheme = new ColorScheme();
@@ -134,15 +143,22 @@ function buildColorListBar(colors) {
 		var ntcColor = ntc.name("#" + colors[i]);
 		var col = document.createElement("div");
 		var blockSpan = document.createElement("div");
+		var fontColorBasedOnBackground = fontColorContrast("#" + colors[i]);
+
+		if(fontColorBasedOnBackground == "#000000"){
+			fontColorBasedOnBackground = "#364347";
+		}
 
 		col.classList.add("col");
 		blockSpan.classList.add("named-color-block");
 		blockSpan.style.backgroundColor = "#" + colors[i];
 		var nameDiv = document.createElement("div");
 		nameDiv.innerHTML = ntcColor[1];
+		nameDiv.style.color = fontColorBasedOnBackground;
 		blockSpan.setAttribute("data-code", colors[i]);
 		blockSpan.setAttribute("data-name", ntcColor[1]);
 		var hexDiv = document.createElement("div");
+		hexDiv.style.color = fontColorBasedOnBackground;
 		hexDiv.classList.add("hex-span");
 		hexDiv.innerHTML = "#" + colors[i];
 		blockSpan.appendChild(nameDiv);
