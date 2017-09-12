@@ -166,6 +166,7 @@ function buildColorListBar(colors) {
 		// special formatting for palettes on mobile (2x2 grid for mono, 2x4 for contrast, with hex code hidden)
 		console.log($('#xs-media-query-test').is(':visible'));
 		if($('#xs-media-query-test').is(':visible')){
+			$('#analogic-scheme-option, #tetrade-scheme-option, #triade-scheme-option').remove();
 			if(colors.length === 8){
 				col.classList.add("col-3");
 				nameDiv.style.fontSize = ".65rem";

@@ -22,14 +22,17 @@ $window-width: $swatches-width + $eyedropper-width + $spacer*3;
 $spectrum-cursor-width: 30px;
 $font-main: "Muli", "sans-serif";
 
+html,
+body {
+  min-height: 100%;
+}
+
 body {
 	background: $color-ui-panel;
 	font-family: $font-main;
 	color: $color-text;
 	letter-spacing: 0.05em;
 	transition: background 0.5s ease;
-	max-height: 100vh;
-	height: 100vh;
 }
 
 #colors-list {
@@ -96,40 +99,6 @@ body {
 	}
 }
 
-.color-picker-panel {
-	background: $color-ui-panel;
-	width: $window-width;
-	border-radius: 8px;
-	border: 2px solid $color-ui-border;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.panel-row {
-	position: relative;
-	margin: 0 10px 10px;
-
-	&:first-child {
-		margin-top: 10px;
-		margin-bottom: $spacer - $swatch-space;
-	}
-
-	&:after {
-		content: "";
-		display: table;
-		clear: both;
-	}
-}
-
-.panel-header {
-	background: $color-ui-panel-dark;
-	padding: 8px;
-	margin: 0 -10px $spacer;
-	text-align: center;
-}
 
 .color-cursor {
 	border-radius: 100%;
@@ -250,6 +219,7 @@ input::-webkit-outer-spin-button {
 		background-color: $color-ui-panel;
 		padding-right: 10px;
 		padding-bottom: 10px;
+		height: auto;
 
 		.user-input-columns {
 			margin-bottom: 10px;
@@ -265,9 +235,9 @@ input::-webkit-outer-spin-button {
 }
 
 @include media-breakpoint-down(sm) {
-	// #analogic-scheme-option,
-	// #tetrade-scheme-option,
-	// #triade-scheme-option {
-	// 	display: none;
-	// }
+	#analogic-scheme-option,
+	#tetrade-scheme-option,
+	#triade-scheme-option {
+		display: none;
+	}
 }

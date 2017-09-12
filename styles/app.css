@@ -8315,14 +8315,16 @@ a.text-dark:focus, a.text-dark:hover {
   overflow: visible;
   clip: auto; }
 
+html,
+body {
+  min-height: 100%; }
+
 body {
   background: #1f232a;
   font-family: "Muli", "sans-serif";
   color: #8b949a;
   letter-spacing: 0.05em;
-  transition: background 0.5s ease;
-  max-height: 100vh;
-  height: 100vh; }
+  transition: background 0.5s ease; }
 
 #colors-list {
   z-index: 999;
@@ -8372,34 +8374,6 @@ body {
     right: 0;
     float: right;
     left: auto; }
-
-.color-picker-panel {
-  background: #1f232a;
-  width: 310px;
-  border-radius: 8px;
-  border: 2px solid #364347;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); }
-
-.panel-row {
-  position: relative;
-  margin: 0 10px 10px; }
-  .panel-row:first-child {
-    margin-top: 10px;
-    margin-bottom: 6px; }
-  .panel-row:after {
-    content: "";
-    display: table;
-    clear: both; }
-
-.panel-header {
-  background: #15191c;
-  padding: 8px;
-  margin: 0 -10px 10px;
-  text-align: center; }
 
 .color-cursor {
   border-radius: 100%;
@@ -8493,7 +8467,8 @@ input::-webkit-outer-spin-button {
     position: relative;
     background-color: #1f232a;
     padding-right: 10px;
-    padding-bottom: 10px; }
+    padding-bottom: 10px;
+    height: auto; }
     #user-inputs-container .user-input-columns {
       margin-bottom: 10px; }
     #user-inputs-container .user-input-label-containers {
@@ -8501,5 +8476,10 @@ input::-webkit-outer-spin-button {
       margin-right: 0;
       text-align: left;
       padding-left: 10px; } }
+@media (max-width: 767px) {
+  #analogic-scheme-option,
+  #tetrade-scheme-option,
+  #triade-scheme-option {
+    display: none; } }
 
 /*# sourceMappingURL=app.css.map */
