@@ -14,6 +14,8 @@ Colors can also be input directly to the bottom inputs via hex code or RGB value
 
 Use the 'Export' button to download the chosen palette in the stylesheet format of your choice (CSS, SCSS, or Sass).
 
+![PallyPal usage walkthrough example](https://github.com/graysonhicks/pallypal/blob/master/app/images/walkthrough.gif?raw=true)
+
 ## npm package
 
 The color palette/naming portion of this code is available as an `npm` package via [this repo](https://github.com/graysonhicks/pallypal-js).
