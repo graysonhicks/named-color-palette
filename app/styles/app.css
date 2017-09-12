@@ -8501,5 +8501,10 @@ input::-webkit-outer-spin-button {
       margin-right: 0;
       text-align: left;
       padding-left: 10px; } }
+@media (max-width: 767px) {
+  #analogic-scheme-option,
+  #tetrade-scheme-option,
+  #triade-scheme-option {
+    display: none; } }
 
 /*# sourceMappingURL=app.css.map */

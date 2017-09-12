@@ -265,9 +265,9 @@ input::-webkit-outer-spin-button {
 }
 
 @include media-breakpoint-down(sm) {
-	// #analogic-scheme-option,
-	// #tetrade-scheme-option,
-	// #triade-scheme-option {
-	// 	display: none;
-	// }
+	#analogic-scheme-option,
+	#tetrade-scheme-option,
+	#triade-scheme-option {
+		display: none;
+	}
 }
