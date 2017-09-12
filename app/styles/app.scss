@@ -96,9 +96,25 @@ body {
 		right: 0;
 		float: right;
 		left: auto;
+
+		li {
+				padding-left: 15px;
+				cursor: pointer;
+
+					&:hover {
+						background-color: rgba($color-text, .5);
+					}
+		}
+
+		.export-buttons {
+			color: $color-ui-panel;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
 	}
 }
-
 
 .color-cursor {
 	border-radius: 100%;

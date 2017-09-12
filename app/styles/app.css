@@ -8374,6 +8374,15 @@ body {
     right: 0;
     float: right;
     left: auto; }
+    #export-button-group .dropdown-menu li {
+      padding-left: 15px;
+      cursor: pointer; }
+      #export-button-group .dropdown-menu li:hover {
+        background-color: rgba(139, 148, 154, 0.5); }
+    #export-button-group .dropdown-menu .export-buttons {
+      color: #1f232a; }
+      #export-button-group .dropdown-menu .export-buttons:hover {
+        text-decoration: none; }
 
 .color-cursor {
   border-radius: 100%;
