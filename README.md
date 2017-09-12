@@ -9,7 +9,7 @@ Generate a color palette based on a chosen color.  Provides semantic named color
 4. ~~include selected color in palette~~
 5. ~~add color-scheme-js variations as option~~
 6. ~~mobile~~
-7. refactor as npm package (e.g. var pallypal = new PallyPal())
+7. ~~refactor as npm package (e.g. var pallypal = new PallyPal())~~
 8. credits within code
 9. ~~refactor markup to bootstrap4 for flexbox?~~
 
