@@ -1,7 +1,7 @@
 // Bootstrap Variables
 $icon-font-path: "../../node_modules/bootstrap-sass/assets/fonts/bootstrap/"; // Import Bootstrap
 @import "../../node_modules/bootstrap/scss/bootstrap";
-@import "../../node_modules/font-awesome/scss/font-awesome";
+
 $color-ui-panel: #1f232a;
 $color-ui-panel-dark: #15191c;
 $color-ui-panel-light: #2a3137;
@@ -24,7 +24,7 @@ $font-main: "Muli", "sans-serif";
 
 html,
 body {
-  min-height: 100%;
+	min-height: 100%;
 }
 
 body {
@@ -98,12 +98,12 @@ body {
 		left: auto;
 
 		li {
-				padding-left: 15px;
-				cursor: pointer;
+			padding-left: 15px;
+			cursor: pointer;
 
-					&:hover {
-						background-color: rgba($color-text, .5);
-					}
+			&:hover {
+				background-color: rgba($color-text, 0.5);
+			}
 		}
 
 		.export-buttons {
