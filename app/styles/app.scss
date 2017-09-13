@@ -251,6 +251,18 @@ input::-webkit-outer-spin-button {
 }
 
 @include media-breakpoint-down(sm) {
+#colors-list {
+
+	h1 {
+		font-size: 1rem;
+    margin-bottom: 0px;
+	}
+
+	h5 {
+		font-size: .75rem;
+	}
+}
+
 	#analogic-scheme-option,
 	#tetrade-scheme-option,
 	#triade-scheme-option {
